@@ -12,7 +12,6 @@
     "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
     "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
     "database": { "key": "База данных", "value": "SQL Server, PostgreSQL" },
-    "tools": { "key": "Инструменты", "value": "Git, Docker, Azure" },
     "languages": {
       "key": "Языки",
       "US": "Анг",

@@ -15,7 +15,6 @@
       "key": "Ma'lumotlar bazasi",
       "value": "SQL Server, PostgreSQL"
     },
-    "tools": { "key": "Vositalar", "value": "Git, Docker, Azure" },
     "languages": {
       "key": "Tillar",
       "US": "Eng",
