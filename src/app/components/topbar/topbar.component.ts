@@ -4,6 +4,7 @@ import { LanguageChangerComponent } from '../language-changer/language-changer.c
 
 @Component({
   selector: 'app-topbar',
+  standalone: true,
   imports: [LanguageChangerComponent],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss',

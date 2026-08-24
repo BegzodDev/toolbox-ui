@@ -1,8 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { SelectModule } from 'primeng/select';
 import { FormsModule } from '@angular/forms';
+import { SelectModule } from 'primeng/select';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+
 import { LayoutService } from '../../core/services/layout.service';
+
+interface Country {
+  name: string;
+  code: string;
+}
 
 @Component({
   selector: 'app-language-changer',
@@ -12,22 +18,24 @@ import { LayoutService } from '../../core/services/layout.service';
   styleUrl: './language-changer.component.scss',
 })
 export class LanguageChangerComponent {
-  constructor(private transloco: TranslocoService) {}
-  countries: any[] | undefined;
-  selectedCountry = { name: 'Jap', code: 'JP' };
+  private transloco = inject(TranslocoService);
   private layoutState = inject(LayoutService);
+
   isMobile = this.layoutState.isMobile;
 
-  ngOnInit() {
-    this.countries = [
-      { name: 'US', code: 'US' },
-      { name: 'Rus', code: 'RU' },
-      { name: 'Jap', code: 'JP' },
-      { name: 'Uzb', code: 'UZ' },
-    ];
-  }
+  countries: Country[] = [
+    { name: 'US', code: 'US' },
+    { name: 'Rus', code: 'RU' },
+    { name: 'Jap', code: 'JP' },
+    { name: 'Uzb', code: 'UZ' },
+  ];
 
-  changeLang(lang: string) {
+  selectedCountry: Country = {
+    name: 'Jap',
+    code: 'JP',
+  };
+
+  changeLang(lang: string): void {
     this.transloco.setActiveLang(lang);
   }
 }

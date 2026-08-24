@@ -1,10 +1,10 @@
 <aside class="sidebar">
   <div class="sidebar-brand">
     <div class="name">bekhzod<span>.dev</span></div>
-    <div class="role">{{ "sidebar.role" }}</div>
+    <div class="role">{{ "sidebar.role" | transloco }}</div>
   </div>
 
-  <div class="tree-label">portfolio/</div>
+  <div class="tree-label">Tools/</div>
   <ul class="tree">
     <li class="tree-item" *ngFor="let item of navItems">
       <a [href]="item.href" [class.active]="item.active">
