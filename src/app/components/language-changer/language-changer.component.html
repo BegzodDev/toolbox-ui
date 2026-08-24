@@ -1,0 +1,34 @@
+<p-select
+  [style]="{ background: 'none' }"
+  [options]="countries"
+  size="small"
+  [(ngModel)]="selectedCountry"
+  (onChange)="changeLang(selectedCountry.code.toLowerCase())"
+  optionLabel="name"
+  placeholder="{{ 'stack.languages.key' | transloco }}"
+  class="w-24"
+>
+  <ng-template #selectedItem let-selectedOption>
+    <div style="display: flex; align-items: center; gap: 0.5rem">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+        [class]="'flag flag-' + selectedOption.code.toLowerCase()"
+      />
+      @if (isMobile() === false) {
+        <div>{{ `stack.languages.${selectedOption.code}` | transloco }}</div>
+      }
+    </div>
+  </ng-template>
+
+  <ng-template #item let-country>
+    <div style="display: flex; align-items: center; gap: 0.5rem">
+      <img
+        src="https://primefaces.org/cdn/primeng/images/demo/flag/flag_placeholder.png"
+        [class]="'flag flag-' + country.code.toLowerCase()"
+      />
+      @if (isMobile() === false) {
+        <div>{{ `stack.languages.${country.code}` | transloco }}</div>
+      }
+    </div>
+  </ng-template>
+</p-select>
