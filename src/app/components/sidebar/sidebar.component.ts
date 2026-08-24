@@ -13,25 +13,25 @@ export class SidebarComponent {
   navItems: NavItem[] = [
     {
       label: 'tools.calculator_home_price',
-      ext: 'about.ts',
+      ext: 'calculate.ts',
       href: '#calculator',
       active: true,
     },
     {
       label: 'tools.seat_generator',
-      ext: 'projects.tsx',
+      ext: 'seat_gen.tsx',
       href: '#seat-generator',
       active: false,
     },
     {
       label: 'tools.furigana_reader',
-      ext: 'experience.log',
+      ext: 'furigana.log',
       href: '#furigana-reader',
       active: false,
     },
     {
       label: 'tools.time_tracker',
-      ext: 'contact.json',
+      ext: 'time_tracker.ts',
       href: '#time-tracker',
       active: false,
     },
