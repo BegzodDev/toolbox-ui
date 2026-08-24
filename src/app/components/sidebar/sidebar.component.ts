@@ -1,36 +1,38 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, TranslocoModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
   navItems: NavItem[] = [
     {
-      label: 'sidebar.nav.about',
+      label: 'tools.calculator_home_price',
       ext: 'about.ts',
-      href: '#about',
+      href: '#calculator',
       active: true,
     },
     {
-      label: 'sidebar.nav.projects',
+      label: 'tools.seat_generator',
       ext: 'projects.tsx',
-      href: '#projects',
+      href: '#seat-generator',
       active: false,
     },
     {
-      label: 'sidebar.nav.experience',
+      label: 'tools.furigana_reader',
       ext: 'experience.log',
-      href: '#contracts',
+      href: '#furigana-reader',
       active: false,
     },
     {
-      label: 'sidebar.nav.contact',
+      label: 'tools.time_tracker',
       ext: 'contact.json',
-      href: '#contact',
+      href: '#time-tracker',
       active: false,
     },
   ];

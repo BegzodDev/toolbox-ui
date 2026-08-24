@@ -1,1 +1,191 @@
 /* You can add global styles to this file, and also import other style files */
+/* ==========================================================
+   Global styles — copy the contents of this file into your
+   existing src/styles.scss (or import it from there).
+   Keeps the exact dark "code-editor" theme from the original
+   static HTML portfolio.
+   ========================================================== */
+
+:root {
+  --bg: #0d1117;
+  --bg-panel: #111722;
+  --bg-elevated: #161d29;
+  --line: #232b39;
+  --line-soft: #1b222e;
+  --text: #e6edf3;
+  --text-dim: #8b96a5;
+  --text-faint: #5b6573;
+  --accent: #5ee3a8;
+  --accent-dim: #2a9d6f;
+  --tag-bg: #1a2230;
+  --font-sans:
+    "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+  --radius: 6px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Shared section styles used by every content component */
+section {
+  padding: 80px 40px;
+  max-width: 880px;
+}
+section + section {
+  border-top: 1px solid var(--line-soft);
+}
+
+.section-tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-tag::before {
+  content: "//";
+  color: var(--text-faint);
+}
+
+h1 {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+h1 .accent {
+  color: var(--accent);
+}
+
+h2 {
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 22px;
+}
+
+.lead {
+  font-size: 17px;
+  color: var(--text-dim);
+  max-width: 560px;
+  margin-bottom: 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 860px) {
+  section {
+    padding: 56px 24px;
+  }
+  h1 {
+    font-size: 32px;
+  }
+}
+
+/* ---- Buttons (used across hero / contact) ---- */
+.btn {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  padding: 11px 20px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  color: var(--text);
+  transition:
+    border-color 0.15s,
+    color 0.15s;
+  display: inline-block;
+}
+.btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+.btn-primary {
+  background: var(--accent);
+  color: #06281c;
+  border-color: var(--accent);
+  font-weight: 500;
+}
+.btn-primary:hover {
+  color: #06281c;
+  opacity: 0.88;
+  border-color: var(--accent);
+}
+
+.reveal-init {
+  opacity: 0;
+  transition:
+    opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-fade-up {
+  transform: translateY(32px);
+}
+
+.reveal-fade-in {
+  transform: none;
+}
+
+.reveal-fade-left {
+  transform: translateX(-32px);
+}
+
+.reveal-fade-right {
+  transform: translateX(32px);
+}
+
+.reveal-scale {
+  transform: scale(0.92);
+}
+
+.reveal-active {
+  opacity: 1 !important;
+  transform: translate(0, 0) scale(1) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-init {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

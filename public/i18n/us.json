@@ -1,2 +1,32 @@
 {
+  "sidebar": {
+    "role": "Software Developer",
+    "nav": {
+      "about": "about",
+      "projects": "projects",
+      "experience": "experience",
+      "contact": "contact"
+    }
+  },
+  "stack": {
+    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
+    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
+    "database": { "key": "Database", "value": "SQL Server, PostgreSQL" },
+    "tools": { "key": "Tools", "value": "Git, Docker, Azure" },
+    "languages": {
+      "key": "Languages",
+      "US": "Eng",
+      "RU": "Rus",
+      "JP": "Jap",
+      "UZ": "Uzb",
+      "value": "Uzb · Rus · Eng · Jap"
+    },
+    "location": { "key": "Location", "value": "Aichi, Japan 🇯🇵" }
+  },
+  "tools": {
+    "calculator_home_price": "Home Price Calculator",
+    "seat_generator": "Seat Generator",
+    "furigana_reader": "Furigana Reader",
+    "time_tracker": "Time Tracker"
+  }
 }

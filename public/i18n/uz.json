@@ -1,2 +1,35 @@
 {
+  "sidebar": {
+    "role": "Dasturchi",
+    "nav": {
+      "about": "men haqimda",
+      "projects": "loyihalar",
+      "experience": "tajriba",
+      "contact": "bog'lanish"
+    }
+  },
+  "stack": {
+    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
+    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
+    "database": {
+      "key": "Ma'lumotlar bazasi",
+      "value": "SQL Server, PostgreSQL"
+    },
+    "tools": { "key": "Vositalar", "value": "Git, Docker, Azure" },
+    "languages": {
+      "key": "Tillar",
+      "US": "Eng",
+      "RU": "Rus",
+      "JP": "Jap",
+      "UZ": "Uzb",
+      "value": "O'zb · Rus · Eng · Jap"
+    },
+    "location": { "key": "Joylashuv", "value": "Aichi, Yaponiya 🇯🇵" }
+  },
+  "tools": {
+    "calculator_home_price": "Uy narxini hisoblash",
+    "seat_generator": "O‘rindiq generatori",
+    "furigana_reader": "Furigana o‘quvchi",
+    "time_tracker": "Vaqt kuzatuvchisi"
+  }
 }

@@ -1,2 +1,32 @@
 {
+  "sidebar": {
+    "role": "Разработчик",
+    "nav": {
+      "about": "обо мне",
+      "projects": "проекты",
+      "experience": "опыт",
+      "contact": "контакты"
+    }
+  },
+  "stack": {
+    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
+    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
+    "database": { "key": "База данных", "value": "SQL Server, PostgreSQL" },
+    "tools": { "key": "Инструменты", "value": "Git, Docker, Azure" },
+    "languages": {
+      "key": "Языки",
+      "US": "Анг",
+      "RU": "Рус",
+      "JP": "Япн",
+      "UZ": "Узб",
+      "value": "Узб · Рус · Анг ·  Япн"
+    },
+    "location": { "key": "Местоположение", "value": "Айти, Япония 🇯🇵" }
+  },
+  "tools": {
+    "calculator_home_price": "Калькулятор стоимости жилья",
+    "seat_generator": "Генератор мест",
+    "furigana_reader": "Чтение фуриганы",
+    "time_tracker": "Учёт времени"
+  }
 }
