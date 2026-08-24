@@ -1,0 +1,30 @@
+.topbar {
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-panel);
+  padding: 10px 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-faint);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.topbar .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: inline-block;
+}
+.topbar .top-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media (max-width: 860px) {
+  .topbar {
+    padding: 10px 24px;
+  }
+}

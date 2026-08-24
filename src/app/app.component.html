@@ -1,0 +1,42 @@
+<div class="shell">
+  <app-sidebar></app-sidebar>
+
+  <!-- Mobile bar (visible only below 860px, sidebar hides itself) -->
+  <div class="mobile-bar">
+    <div class="top-side">
+      <div class="name">bekhzod<span>.dev</span></div>
+      @if (isMobile()) {
+        <app-language-changer></app-language-changer>
+      }
+    </div>
+    <nav class="mobile-nav">
+      <div class="mobile-nav__track">
+        <div class="mobile-nav__group">
+          <a href="#about">about</a>
+          <span class="dot">•</span>
+          <a href="#projects">projects</a>
+          <span class="dot">•</span>
+          <a href="#contracts">experience</a>
+          <span class="dot">•</span>
+          <a href="#contact">contact</a>
+          <span class="dot">•</span>
+        </div>
+        <div class="mobile-nav__group" aria-hidden="true">
+          <a href="#about">about</a>
+          <span class="dot">•</span>
+          <a href="#projects">projects</a>
+          <span class="dot">•</span>
+          <a href="#contracts">experience</a>
+          <span class="dot">•</span>
+          <a href="#contact">contact</a>
+          <span class="dot">•</span>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <app-topbar></app-topbar>
+    <!-- <app-footer></app-footer> -->
+  </main>
+</div>

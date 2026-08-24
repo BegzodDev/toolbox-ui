@@ -1,0 +1,29 @@
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <div class="name">bekhzod<span>.dev</span></div>
+    <div class="role">{{ "sidebar.role" }}</div>
+  </div>
+
+  <div class="tree-label">portfolio/</div>
+  <ul class="tree">
+    <li class="tree-item" *ngFor="let item of navItems">
+      <a [href]="item.href" [class.active]="item.active">
+        <span>{{ item.label }}</span>
+        <span class="ext">{{ item.ext }}</span>
+      </a>
+    </li>
+  </ul>
+
+  <div class="sidebar-footer">
+    <a
+      href="https://www.linkedin.com/in/bekhzod-qodirboev-a38b0a262"
+      target="_blank"
+      rel="noopener"
+      >LinkedIn</a
+    >
+    <a href="https://github.com/BegzodDev" target="_blank" rel="noopener"
+      >GitHub</a
+    >
+    <a href="mailto:begzodpublic@gmail.com">Email</a>
+  </div>
+</aside>
