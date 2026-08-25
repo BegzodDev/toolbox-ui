@@ -35,7 +35,8 @@
     }
   },
   "tools": {
-    "calculator_home_price": "住宅価格計算機",
+    "home": "ホーム",
+    "calculator": "計算機",
     "seat_generator": "席ジェネレーター",
     "furigana_reader": "ふりがなリーダー",
     "time_tracker": "時間管理"

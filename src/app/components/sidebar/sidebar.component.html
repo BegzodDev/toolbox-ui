@@ -7,7 +7,11 @@
   <div class="tree-label">Tools/</div>
   <ul class="tree">
     <li class="tree-item" *ngFor="let item of navItems">
-      <a [href]="item.href" [class.active]="item.active">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+      >
         <span>{{ item.label | transloco }}</span>
         <span class="ext">{{ item.ext }}</span>
       </a>

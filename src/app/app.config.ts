@@ -5,9 +5,12 @@ import Aura from '@primeuix/themes/aura';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideTransloco } from '@jsverse/transloco';
 import { TranslocoHttpLoader } from './core/services/transloco-loader';
+import { provideRouter } from '@angular/router';
+import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideRouter(routes),
     provideHttpClient(withFetch()),
 
     provideAnimationsAsync(),

@@ -23,9 +23,10 @@
     "location": { "key": "Местоположение", "value": "Айти, Япония 🇯🇵" }
   },
   "tools": {
-    "calculator_home_price": "Калькулятор стоимости жилья",
+    "home": "Главная",
+    "calculator": "Калькулятор",
     "seat_generator": "Генератор мест",
-    "furigana_reader": "Чтение фуриганы",
-    "time_tracker": "Учёт времени"
+    "furigana_reader": "Ридер фуриганы",
+    "time_tracker": "Трекер времени"
   }
 }

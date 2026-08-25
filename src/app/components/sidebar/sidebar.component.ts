@@ -1,39 +1,41 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, TranslocoModule],
+  imports: [CommonModule, TranslocoModule, RouterLink, RouterLinkActive],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
   navItems: NavItem[] = [
     {
-      label: 'tools.calculator_home_price',
+      label: 'tools.home',
+      ext: 'index.ts',
+      route: '/',
+    },
+    {
+      label: 'tools.calculator',
       ext: 'calculate.ts',
-      href: '#calculator',
-      active: true,
+      route: '/calculator',
     },
     {
       label: 'tools.seat_generator',
       ext: 'seat_gen.tsx',
-      href: '#seat-generator',
-      active: false,
+      route: '/seat-generator',
     },
     {
       label: 'tools.furigana_reader',
       ext: 'furigana.log',
-      href: '#furigana-reader',
-      active: false,
+      route: '/furigana-reader',
     },
     {
       label: 'tools.time_tracker',
       ext: 'time_tracker.ts',
-      href: '#time-tracker',
-      active: false,
+      route: '/time-tracker',
     },
   ];
 }
@@ -41,6 +43,5 @@ export class SidebarComponent {
 interface NavItem {
   label: string;
   ext: string;
-  href: string;
-  active: boolean;
+  route: string;
 }
