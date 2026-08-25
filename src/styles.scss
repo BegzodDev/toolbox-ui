@@ -2,22 +2,71 @@
 /* ==========================================================
    Global styles — copy the contents of this file into your
    existing src/styles.scss (or import it from there).
-   Keeps the exact dark "code-editor" theme from the original
-   static HTML portfolio.
+
+   Palette swap: the old dark "code-editor" theme has been
+   replaced with a light theme built from your 5-color set.
+   All component .scss files below are untouched because they
+   only reference the CSS custom properties (var(--...)) — so
+   changing the values here is enough to re-theme the whole app.
    ========================================================== */
 
+// ---- Base palette (5 colors) --------------------------------
+$light-coral: #dd7373;
+$space-indigo: #3b3561;
+$golden-glow: #ead94c;
+$dust-grey: #d1d1d1;
+$tropical-teal: #51a3a3;
+
+// Optional — built-in gradients from the same palette, in case
+// you want to use one on a hero/section background later.
+$gradient-top: linear-gradient(
+  0deg,
+  $light-coral,
+  $space-indigo,
+  $golden-glow,
+  $dust-grey,
+  $tropical-teal
+);
+$gradient-right: linear-gradient(
+  90deg,
+  $light-coral,
+  $space-indigo,
+  $golden-glow,
+  $dust-grey,
+  $tropical-teal
+);
+$gradient-radial: radial-gradient(
+  $light-coral,
+  $space-indigo,
+  $golden-glow,
+  $dust-grey,
+  $tropical-teal
+);
+
 :root {
-  --bg: #0d1117;
-  --bg-panel: #111722;
-  --bg-elevated: #161d29;
-  --line: #232b39;
-  --line-soft: #1b222e;
-  --text: #e6edf3;
-  --text-dim: #8b96a5;
-  --text-faint: #5b6573;
-  --accent: #5ee3a8;
-  --accent-dim: #2a9d6f;
-  --tag-bg: #1a2230;
+  // Surfaces — light theme, so "elevated" gets a touch darker
+  // instead of lighter (the old dark theme did the opposite).
+  --bg: #{lighten($dust-grey, 9%)};
+  --bg-panel: #{$dust-grey};
+  --bg-elevated: #{darken($dust-grey, 6%)};
+  --line: #{darken($dust-grey, 22%)};
+  --line-soft: #{darken($dust-grey, 10%)};
+
+  // Text
+  --text: #{$space-indigo};
+  --text-dim: #{lighten($space-indigo, 20%)};
+  --text-faint: #{lighten($space-indigo, 34%)};
+
+  // Accent = Light Coral (per your pick)
+  --accent: #{$light-coral};
+  --accent-dim: #{darken($light-coral, 12%)};
+  // Text color for anything placed ON the accent color (buttons)
+  --on-accent: #{darken($space-indigo, 6%)};
+
+  // Reserved from the old theme — not used by the layout files
+  // you sent, kept in case another component (tags/badges) needs it.
+  --tag-bg: #{lighten($tropical-teal, 42%)};
+
   --font-sans:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
@@ -139,12 +188,12 @@ a:focus-visible,
 }
 .btn-primary {
   background: var(--accent);
-  color: #06281c;
+  color: var(--on-accent);
   border-color: var(--accent);
   font-weight: 500;
 }
 .btn-primary:hover {
-  color: #06281c;
+  color: var(--on-accent);
   opacity: 0.88;
   border-color: var(--accent);
 }
