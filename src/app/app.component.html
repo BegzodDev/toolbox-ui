@@ -1,7 +1,5 @@
 <div class="shell">
   <app-sidebar></app-sidebar>
-
-  <!-- Mobile bar (visible only below 860px, sidebar hides itself) -->
   <div class="mobile-bar">
     <div class="top-side">
       <div class="name">bekhzod<span>.dev</span></div>
@@ -9,34 +7,44 @@
         <app-language-changer></app-language-changer>
       }
     </div>
-    <nav class="mobile-nav">
-      <div class="mobile-nav__track">
-        <div class="mobile-nav__group">
-          <a href="#about">about</a>
-          <span class="dot">•</span>
-          <a href="#projects">projects</a>
-          <span class="dot">•</span>
-          <a href="#contracts">experience</a>
-          <span class="dot">•</span>
-          <a href="#contact">contact</a>
-          <span class="dot">•</span>
-        </div>
-        <div class="mobile-nav__group" aria-hidden="true">
-          <a href="#about">about</a>
-          <span class="dot">•</span>
-          <a href="#projects">projects</a>
-          <span class="dot">•</span>
-          <a href="#contracts">experience</a>
-          <span class="dot">•</span>
-          <a href="#contact">contact</a>
-          <span class="dot">•</span>
-        </div>
-      </div>
+    <nav class="mobile-nav" aria-label="Section navigation">
+      <span class="mobile-nav__prompt">&#10095;</span>
+      <span class="mobile-nav__cmd">nav</span>
+      <a
+        href="#about"
+        class="mobile-nav__arg"
+        [class.active]="activeSection() === 'about'"
+        (click)="setActiveSection('about')"
+        >about</a
+      >
+      <a
+        href="#projects"
+        class="mobile-nav__arg"
+        [class.active]="activeSection() === 'projects'"
+        (click)="setActiveSection('projects')"
+        >projects</a
+      >
+      <a
+        href="#contracts"
+        class="mobile-nav__arg"
+        [class.active]="activeSection() === 'contracts'"
+        (click)="setActiveSection('contracts')"
+        >experience</a
+      >
+      <a
+        href="#contact"
+        class="mobile-nav__arg"
+        [class.active]="activeSection() === 'contact'"
+        (click)="setActiveSection('contact')"
+        >contact</a
+      >
+      <span class="mobile-nav__cursor"></span>
     </nav>
   </div>
 
   <main>
     <app-topbar></app-topbar>
+    <router-outlet></router-outlet>
     <!-- <app-footer></app-footer> -->
   </main>
 </div>

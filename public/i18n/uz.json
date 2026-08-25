@@ -26,9 +26,10 @@
     "location": { "key": "Joylashuv", "value": "Aichi, Yaponiya 🇯🇵" }
   },
   "tools": {
-    "calculator_home_price": "Uy narxini hisoblash",
-    "seat_generator": "O‘rindiq generatori",
-    "furigana_reader": "Furigana o‘quvchi",
+    "home": "Bosh sahifa",
+    "calculator": "Kalkulyator",
+    "seat_generator": "Joy generatori",
+    "furigana_reader": "Furigana o'quvchi",
     "time_tracker": "Vaqt kuzatuvchisi"
   }
 }
