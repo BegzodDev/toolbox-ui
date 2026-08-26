@@ -1,18 +1,23 @@
 <div class="shell">
-  <app-sidebar></app-sidebar>
+  <app-sidebar />
+
   <div class="mobile-bar">
     <div class="top-side">
       <div class="name">bekhzod<span>.dev</span></div>
+
       @if (isMobile()) {
-        <app-language-changer></app-language-changer>
+        <app-language-changer />
       }
     </div>
     <nav class="mobile-nav" aria-label="Tool navigation">
-      <span style="padding-bottom: 3px">PG</span>
-      <span class="mobile-nav__prompt">&#10095;</span>
-
+      <span class="mobile-nav__prefix"> PG </span>
+      <span class="mobile-nav__prompt"> &#10095; </span>
       @for (item of navItems; track item.route) {
-        <a href="{{ item.route }}" class="mobile-nav__arg">
+        <a
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          class="mobile-nav__arg"
+        >
           {{ item.label | transloco }}
         </a>
       }
@@ -21,9 +26,11 @@
     </nav>
   </div>
 
+  <header>
+    <app-topbar />
+  </header>
+
   <main>
-    <app-topbar></app-topbar>
-    <router-outlet></router-outlet>
-    <!-- <app-footer></app-footer> -->
+    <router-outlet />
   </main>
 </div>

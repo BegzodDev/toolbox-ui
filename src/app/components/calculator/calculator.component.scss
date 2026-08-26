@@ -3,9 +3,9 @@
    ============================================================ */
 
 .calc-page {
-  max-width: 1040px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 40px 24px 80px;
+  padding: 1rem 2rem 4rem;
 }
 
 /* ---- Header ---- */
@@ -217,30 +217,34 @@
 
 /* ---- Form sections ---- */
 .form-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+
   border-top: 1px solid var(--line-soft);
   padding-top: 16px;
   margin-top: 4px;
 }
 
-.form-section:first-of-type {
-  border-top: none;
-  padding-top: 0;
-  margin-top: 0;
+.form-section > div {
+  min-width: 0;
 }
 
 .form-section h2 {
   font-size: 14px;
   font-weight: 600;
   color: var(--text-dim);
-  margin-bottom: 12px;
-  margin-top: 0;
+
+  margin: 0 0 12px;
 }
 
 /* ---- Fields ---- */
+
 .field {
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 12px;
 }
 
 .field label {
@@ -252,11 +256,15 @@
 .field input {
   font-family: var(--font-sans);
   font-size: 14px;
+
   padding: 9px 12px;
+
   border-radius: var(--radius);
   border: 1px solid var(--line);
+
   background: var(--bg);
   color: var(--text);
+
   width: 100%;
   box-sizing: border-box;
 }
@@ -272,6 +280,7 @@
 }
 
 /* ---- Help text ---- */
+
 .field-help {
   font-size: 11px;
   color: var(--text-faint);
@@ -279,17 +288,32 @@
 }
 
 /* ---- Error messages ---- */
+
 .field-error {
   font-size: 11px;
   color: var(--accent-dim, #e74c3c);
   line-height: 1.4;
 }
 
-/* ---- Field rows (2-column) ---- */
+/* ---- Field rows ---- */
+
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+}
+
+.field-row:last-child {
+  margin-bottom: 0;
+}
+
+/* ---- Responsive ---- */
+
+@media (max-width: 800px) {
+  .form-section {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
 }
 
 @media (max-width: 480px) {

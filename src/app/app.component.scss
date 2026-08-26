@@ -5,10 +5,24 @@
 .shell {
   display: grid;
   grid-template-columns: 260px 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas:
+    "sidebar topbar"
+    "sidebar main";
+
   min-height: 100vh;
 }
 
+app-sidebar {
+  grid-area: sidebar;
+}
+
+header {
+  grid-area: topbar;
+}
+
 main {
+  grid-area: main;
   min-width: 0;
 }
 
@@ -16,46 +30,80 @@ main {
   display: none;
 }
 
+/* =========================================
+   MOBILE
+   ========================================= */
+
 @media (max-width: 860px) {
   .shell {
-    grid-template-columns: 1fr;
-    min-height: auto;
+    display: block;
+    min-height: 100vh;
   }
+
+  app-sidebar {
+    display: none;
+  }
+
   .mobile-bar {
-    display: list-item;
-    justify-content: space-between;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    width: 100%;
+    box-sizing: border-box;
+
     padding: 0.5rem 1rem;
+
     border-bottom: 1px solid var(--line);
     background: var(--bg-panel);
+
     font-family: var(--font-mono);
+
     position: sticky;
     top: 0;
     z-index: 10;
   }
-  .mobile-bar .name span {
-    color: var(--accent);
-  }
-  .mobile-bar .top-side {
+
+  .top-side {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-right: 0.5rem;
+
+    width: 100%;
+    min-height: 28px;
   }
+
+  .name {
+    font-family: var(--font-mono);
+  }
+
+  .name span {
+    color: var(--accent);
+  }
+
   .mobile-nav {
     display: flex;
     align-items: center;
+
     width: 100%;
     max-width: 95vw;
+
     box-sizing: border-box;
+
     overflow-x: auto;
+    overflow-y: hidden;
+
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
+
     white-space: nowrap;
+
     font-size: 12px;
     font-variant: all-small-caps;
     font-family: var(--font-mono);
+
     letter-spacing: 0.06em;
+
     gap: 4px;
 
     &::-webkit-scrollbar {
@@ -66,42 +114,63 @@ main {
       color: var(--accent);
       font-variant: normal;
       margin-right: 2px;
-    }
-
-    &__cmd {
-      color: var(--text-dim);
-      margin-right: 4px;
+      flex-shrink: 0;
     }
 
     &__arg {
       color: var(--text-dim);
+
       text-decoration: none;
-      padding: 2px 1px;
-      transition: color 0.15s ease;
+
+      padding: 2px 5px;
+
+      cursor: pointer;
+
+      flex-shrink: 0;
+
+      transition:
+        color 0.15s ease,
+        background-color 0.15s ease;
 
       &::before {
         content: "--";
         color: var(--text-faint);
+
         transition: color 0.15s ease;
       }
 
-      &.active,
-      &:hover {
+      &:hover,
+      &.active {
         color: var(--accent);
       }
-      &.active::before,
-      &:hover::before {
+
+      &.active {
+        font-weight: 600;
+      }
+
+      &:hover::before,
+      &.active::before {
         color: var(--accent-dim);
+      }
+
+      &:focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 2px;
       }
     }
 
     &__cursor {
       display: inline-block;
+
       width: 6px;
       height: 13px;
+
       margin-left: 4px;
+
       background: var(--accent);
+
       animation: cursor-blink 1s steps(1) infinite;
+
       flex-shrink: 0;
     }
   }
@@ -111,13 +180,13 @@ main {
     50% {
       opacity: 1;
     }
+
     50.01%,
     100% {
       opacity: 0;
     }
   }
 }
-
 .mobile-nav__arg {
   color: #56558f;
   text-decoration: none;
