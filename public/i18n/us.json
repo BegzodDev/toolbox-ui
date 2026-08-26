@@ -1,26 +1,38 @@
 {
   "sidebar": {
-    "role": "Software Developer",
+    "role": "Software Engineer",
     "nav": {
-      "about": "about",
-      "projects": "projects",
-      "experience": "experience",
-      "contact": "contact"
+      "about": "About",
+      "projects": "Projects",
+      "experience": "Experience",
+      "contact": "Contact"
     }
   },
   "stack": {
-    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
-    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
-    "database": { "key": "Database", "value": "SQL Server, PostgreSQL" },
+    "frontend": {
+      "key": "Frontend",
+      "value": "Angular, TypeScript"
+    },
+    "backend": {
+      "key": "Backend",
+      "value": "ASP.NET Core, C#"
+    },
+    "database": {
+      "key": "Database",
+      "value": "PostgreSQL, SQL Server"
+    },
     "languages": {
       "key": "Languages",
-      "US": "Eng",
-      "RU": "Rus",
-      "JP": "Jap",
-      "UZ": "Uzb",
-      "value": "Uzb · Rus · Eng · Jap"
+      "US": "English",
+      "RU": "Russian",
+      "JP": "Japanese",
+      "UZ": "Uzbek",
+      "value": "Uzbek, Russian, English, Japanese"
     },
-    "location": { "key": "Location", "value": "Aichi, Japan 🇯🇵" }
+    "location": {
+      "key": "Location",
+      "value": "Aichi Prefecture, Japan 🇯🇵"
+    }
   },
   "tools": {
     "home": "Home",
@@ -28,5 +40,59 @@
     "seat_generator": "Seat Generator",
     "furigana_reader": "Furigana Reader",
     "time_tracker": "Time Tracker"
+  },
+  "calculator": {
+    "title": "Rental Initial Cost Simulator",
+    "description": "Easily calculate the money needed to move from rent.",
+    "initialCostEstimate": "Estimated Initial Cost",
+    "monthlyCost": "Monthly Cost",
+    "breakdown": "Cost Breakdown",
+    "rentRelated": "Rent Related",
+    "firstRent": "First Rent",
+    "proratedRent": "Prorated Rent",
+    "contractCosts": "Contract Costs",
+    "deposit": "Deposit",
+    "keyMoney": "Key Money",
+    "brokerageFee": "Brokerage Fee",
+    "guarantorFee": "Guarantor Fee",
+    "moveInCosts": "Move-in Costs",
+    "fireInsurance": "Fire Insurance",
+    "keyExchangeFee": "Key Exchange Fee",
+    "cleaningFee": "Cleaning Fee",
+    "support24h": "24h Support",
+    "proratedNote": "※ Since the move-in date is set, prorated rent (current month) + first rent are calculated.",
+    "disclaimer": "※ The displayed amounts are estimates. Actual initial costs vary depending on the property, contract terms, and real estate company.",
+    "invalidTitle": "Please check your input",
+    "invalidDescription": "Enter the correct amount to calculate the initial cost.",
+    "presets": {
+      "cheap": "Cheap",
+      "standard": "Standard",
+      "expensive": "Expensive"
+    },
+    "reset": "Reset",
+    "basicInfo": "Basic Information",
+    "rentLabel": "Rent (Monthly)",
+    "errorMinZero": "Please enter an amount of 0 or more.",
+    "managementFeeLabel": "Management / Common Fee (Monthly)",
+    "moveInDateLabel": "Move-in Date (Optional)",
+    "moveInDateHelp": "Setting the move-in date calculates prorated rent (current month) + first rent.",
+    "errorPastDate": "Please select a date from today onwards.",
+    "contractCostsTitle": "Contract Costs",
+    "depositMonthsLabel": "Deposit (Months)",
+    "keyMoneyMonthsLabel": "Key Money (Months)",
+    "brokerageMonthsLabel": "Brokerage Fee (Months)",
+    "errorBrokerageMax": "The legal maximum is 1 month.",
+    "guarantorRateLabel": "Guarantor Fee (%)",
+    "errorRateRange": "Please enter a rate between 0 and 100%.",
+    "moveInCostsTitle": "Move-in Costs",
+    "fireInsuranceLabel": "Fire Insurance Premium",
+    "keyExchangeFeeLabel": "Key Exchange Fee",
+    "cleaningFeeLabel": "Cleaning Fee",
+    "supportFeeLabel": "24h Support",
+    "firstRentTitle": "First Rent",
+    "firstRentMonthsLabel": "First Rent (Months)",
+    "firstRentHelp": "Please enter the number of months of rent to be paid in advance at the time of contract.",
+    "errorInteger": "Please enter an integer.",
+    "formDisclaimer": "※ For fees not included in the contract, such as cleaning fees and 24h support, please enter \"0\"."
   }
 }
