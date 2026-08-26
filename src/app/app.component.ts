@@ -4,6 +4,7 @@ import { LanguageChangerComponent } from './components/language-changer/language
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LayoutService } from './core/services/layout.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,37 @@ import { TopbarComponent } from './components/topbar/topbar.component';
     LanguageChangerComponent,
     SidebarComponent,
     TopbarComponent,
+    TranslocoModule,
   ],
 })
 export class AppComponent {
+  navItems: NavItem[] = [
+    {
+      label: 'tools.home',
+      ext: 'index.ts',
+      route: '/',
+    },
+    {
+      label: 'tools.calculator',
+      ext: 'calculate.ts',
+      route: '/calculator',
+    },
+    // {
+    //   label: 'tools.seat_generator',
+    //   ext: 'seat_gen.tsx',
+    //   route: '/seat-generator',
+    // },
+    // {
+    //   label: 'tools.furigana_reader',
+    //   ext: 'furigana.log',
+    //   route: '/furigana-reader',
+    // },
+    // {
+    //   label: 'tools.time_tracker',
+    //   ext: 'time_tracker.ts',
+    //   route: '/time-tracker',
+    // },
+  ];
   title = 'toolbox-ui';
 
   private layoutState = inject(LayoutService);
@@ -26,4 +55,10 @@ export class AppComponent {
   setActiveSection(section: string): void {
     this.activeSection.set(section);
   }
+}
+
+interface NavItem {
+  label: string;
+  ext: string;
+  route: string;
 }
