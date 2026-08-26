@@ -2,6 +2,7 @@ import { DecimalPipe } from '@angular/common';
 import { Component, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { TranslocoModule } from '@jsverse/transloco';
 
 /**
  * Rental calculator input values.
@@ -120,7 +121,7 @@ const PRESETS: RentalPreset[] = [
 @Component({
   selector: 'app-calculator',
   standalone: true,
-  imports: [ReactiveFormsModule, DecimalPipe],
+  imports: [ReactiveFormsModule, DecimalPipe, TranslocoModule],
   templateUrl: './calculator.component.html',
   styleUrl: './calculator.component.scss',
 })

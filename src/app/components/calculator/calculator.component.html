@@ -1,10 +1,10 @@
 <section class="calc-page">
   <header class="calc-header">
-    <div class="section-tag">calculate.ts</div>
+    <div class="section-tag">{{ "tools.calculator" | transloco }}</div>
 
-    <h1>賃貸初期費用シミュレーター</h1>
+    <h1>{{ "calculator.title" | transloco }}</h1>
 
-    <p class="lead">家賃から引っ越しに必要なお金を簡単に計算できます。</p>
+    <p class="lead">{{ "calculator.description" | transloco }}</p>
   </header>
 
   <div class="calc-grid">
@@ -16,7 +16,9 @@
       @if (result(); as result) {
         <!-- Initial cost -->
         <div class="result-card">
-          <div class="result-card__label">初期費用の目安</div>
+          <div class="result-card__label">
+            {{ "calculator.initialCostEstimate" | transloco }}
+          </div>
 
           <div class="result-card__value">
             ¥{{ result.totalInitialCost | number: "1.0-0" }}
@@ -25,7 +27,9 @@
 
         <!-- Monthly cost -->
         <div class="result-card result-card--secondary">
-          <div class="result-card__label">月額費用</div>
+          <div class="result-card__label">
+            {{ "calculator.monthlyCost" | transloco }}
+          </div>
 
           <div class="result-card__value">
             ¥{{ result.monthlyCost | number: "1.0-0" }}
@@ -36,20 +40,20 @@
              BREAKDOWN
         ================================================== -->
 
-        <h2>初期費用の内訳</h2>
+        <h2>{{ "calculator.breakdown" | transloco }}</h2>
 
         <!-- Rent -->
         <div class="breakdown-group">
-          <h3>家賃関連</h3>
+          <h3>{{ "calculator.rentRelated" | transloco }}</h3>
 
           <div class="breakdown-row" [class.muted]="result.firstRent === 0">
-            <span>前家賃</span>
+            <span>{{ "calculator.firstRent" | transloco }}</span>
 
             <span> ¥{{ result.firstRent | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.proratedRent === 0">
-            <span>日割り家賃</span>
+            <span>{{ "calculator.proratedRent" | transloco }}</span>
 
             <span> ¥{{ result.proratedRent | number: "1.0-0" }} </span>
           </div>
@@ -57,28 +61,28 @@
 
         <!-- Contract -->
         <div class="breakdown-group">
-          <h3>契約費用</h3>
+          <h3>{{ "calculator.contractCosts" | transloco }}</h3>
 
           <div class="breakdown-row" [class.muted]="result.deposit === 0">
-            <span>敷金</span>
+            <span>{{ "calculator.deposit" | transloco }}</span>
 
             <span> ¥{{ result.deposit | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.keyMoney === 0">
-            <span>礼金</span>
+            <span>{{ "calculator.keyMoney" | transloco }}</span>
 
             <span> ¥{{ result.keyMoney | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.brokerageFee === 0">
-            <span>仲介手数料</span>
+            <span>{{ "calculator.brokerageFee" | transloco }}</span>
 
             <span> ¥{{ result.brokerageFee | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.guarantorFee === 0">
-            <span>保証会社利用料</span>
+            <span>{{ "calculator.guarantorFee" | transloco }}</span>
 
             <span> ¥{{ result.guarantorFee | number: "1.0-0" }} </span>
           </div>
@@ -86,10 +90,10 @@
 
         <!-- Move-in -->
         <div class="breakdown-group">
-          <h3>入居関連費用</h3>
+          <h3>{{ "calculator.moveInCosts" | transloco }}</h3>
 
           <div class="breakdown-row" [class.muted]="result.fireInsurance === 0">
-            <span>火災保険料</span>
+            <span>{{ "calculator.fireInsurance" | transloco }}</span>
 
             <span> ¥{{ result.fireInsurance | number: "1.0-0" }} </span>
           </div>
@@ -98,19 +102,19 @@
             class="breakdown-row"
             [class.muted]="result.keyExchangeFee === 0"
           >
-            <span>鍵交換費用</span>
+            <span>{{ "calculator.keyExchangeFee" | transloco }}</span>
 
             <span> ¥{{ result.keyExchangeFee | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.cleaningFee === 0">
-            <span>クリーニング費用</span>
+            <span>{{ "calculator.cleaningFee" | transloco }}</span>
 
             <span> ¥{{ result.cleaningFee | number: "1.0-0" }} </span>
           </div>
 
           <div class="breakdown-row" [class.muted]="result.supportFee === 0">
-            <span>24時間サポート</span>
+            <span>{{ "calculator.support24h" | transloco }}</span>
 
             <span> ¥{{ result.supportFee | number: "1.0-0" }} </span>
           </div>
@@ -119,21 +123,19 @@
         <!-- Explanation -->
         @if (result.proratedRent > 0) {
           <p class="calculation-note">
-            ※
-            入居予定日を設定しているため、日割り家賃（当月分）＋前家賃を計算しています。
+            {{ "calculator.proratedNote" | transloco }}
           </p>
         }
 
         <p class="disclaimer">
-          ※ 表示される金額は目安です。 実際の初期費用は物件や契約条件、
-          不動産会社によって異なります。
+          {{ "calculator.disclaimer" | transloco }}
         </p>
       } @else {
         <!-- Invalid form -->
         <div class="result-empty">
-          <h2>入力内容を確認してください</h2>
+          <h2>{{ "calculator.invalidTitle" | transloco }}</h2>
 
-          <p>正しい金額を入力すると、 初期費用を計算できます。</p>
+          <p>{{ "calculator.invalidDescription" | transloco }}</p>
         </div>
       }
     </div>
@@ -151,12 +153,12 @@
             class="preset-btn"
             (click)="applyPreset(preset)"
           >
-            {{ preset.label }}
+            {{ "calculator.presets." + preset.id | transloco }}
           </button>
         }
 
         <button type="button" class="reset-btn" (click)="resetForm()">
-          リセット
+          {{ "calculator.reset" | transloco }}
         </button>
       </div>
 
@@ -165,11 +167,11 @@
       ================================================== -->
 
       <div class="form-section">
-        <h2>基本情報</h2>
+        <h2>{{ "calculator.basicInfo" | transloco }}</h2>
 
         <!-- Rent -->
         <div class="field">
-          <label for="rent"> 家賃（月額） </label>
+          <label for="rent"> {{ "calculator.rentLabel" | transloco }} </label>
 
           <input
             id="rent"
@@ -181,14 +183,16 @@
 
           @if (form.controls.rent.invalid && form.controls.rent.touched) {
             <span id="rent-error" class="field-error" role="alert">
-              0以上の金額を入力してください。
+              {{ "calculator.errorMinZero" | transloco }}
             </span>
           }
         </div>
 
         <!-- Management fee -->
         <div class="field">
-          <label for="managementFee"> 管理費・共益費（月額） </label>
+          <label for="managementFee">
+            {{ "calculator.managementFeeLabel" | transloco }}
+          </label>
 
           <input
             id="managementFee"
@@ -203,14 +207,16 @@
             form.controls.managementFee.touched
           ) {
             <span id="managementFee-error" class="field-error" role="alert">
-              0以上の金額を入力してください。
+              {{ "calculator.errorMinZero" | transloco }}
             </span>
           }
         </div>
 
         <!-- Move in date -->
         <div class="field">
-          <label for="moveInDate"> 入居予定日（任意） </label>
+          <label for="moveInDate">
+            {{ "calculator.moveInDateLabel" | transloco }}
+          </label>
 
           <input
             id="moveInDate"
@@ -220,14 +226,14 @@
           />
 
           <span id="moveInDate-help" class="field-help">
-            入居日を設定すると、当月分の日割り家賃＋前家賃を計算します。
+            {{ "calculator.moveInDateHelp" | transloco }}
           </span>
 
           @if (
             form.controls.moveInDate.invalid && form.controls.moveInDate.touched
           ) {
             <span id="moveInDate-error" class="field-error" role="alert">
-              今日以降の日付を選択してください。
+              {{ "calculator.errorPastDate" | transloco }}
             </span>
           }
         </div>
@@ -238,12 +244,14 @@
       ================================================== -->
 
       <div class="form-section">
-        <h2>契約費用</h2>
+        <h2>{{ "calculator.contractCostsTitle" | transloco }}</h2>
 
         <!-- Deposit / Key money -->
         <div class="field-row">
           <div class="field">
-            <label for="depositMonths"> 敷金（ヶ月） </label>
+            <label for="depositMonths">
+              {{ "calculator.depositMonthsLabel" | transloco }}
+            </label>
 
             <input
               id="depositMonths"
@@ -259,13 +267,15 @@
               form.controls.depositMonths.touched
             ) {
               <span id="depositMonths-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
 
           <div class="field">
-            <label for="keyMoneyMonths"> 礼金（ヶ月） </label>
+            <label for="keyMoneyMonths">
+              {{ "calculator.keyMoneyMonthsLabel" | transloco }}
+            </label>
 
             <input
               id="keyMoneyMonths"
@@ -281,7 +291,7 @@
               form.controls.keyMoneyMonths.touched
             ) {
               <span id="keyMoneyMonths-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
@@ -290,7 +300,9 @@
         <!-- Brokerage / Guarantor -->
         <div class="field-row">
           <div class="field">
-            <label for="brokerageMonths"> 仲介手数料（ヶ月） </label>
+            <label for="brokerageMonths">
+              {{ "calculator.brokerageMonthsLabel" | transloco }}
+            </label>
 
             <input
               id="brokerageMonths"
@@ -308,16 +320,18 @@
             ) {
               <span id="brokerageMonths-error" class="field-error" role="alert">
                 @if (form.controls.brokerageMonths.hasError("max")) {
-                  法定上限は1ヶ月です。
+                  {{ "calculator.errorBrokerageMax" | transloco }}
                 } @else {
-                  0以上の金額を入力してください。
+                  {{ "calculator.errorMinZero" | transloco }}
                 }
               </span>
             }
           </div>
 
           <div class="field">
-            <label for="guarantorRate"> 保証会社利用料（%） </label>
+            <label for="guarantorRate">
+              {{ "calculator.guarantorRateLabel" | transloco }}
+            </label>
 
             <input
               id="guarantorRate"
@@ -333,7 +347,7 @@
               form.controls.guarantorRate.touched
             ) {
               <span id="guarantorRate-error" class="field-error" role="alert">
-                保証料率は0〜100%で入力してください。
+                {{ "calculator.errorRateRange" | transloco }}
               </span>
             }
           </div>
@@ -345,12 +359,14 @@
       ================================================== -->
 
       <div class="form-section">
-        <h2>入居関連費用</h2>
+        <h2>{{ "calculator.moveInCostsTitle" | transloco }}</h2>
 
         <!-- Insurance / Key -->
         <div class="field-row">
           <div class="field">
-            <label for="fireInsurance"> 火災保険料 </label>
+            <label for="fireInsurance">
+              {{ "calculator.fireInsuranceLabel" | transloco }}
+            </label>
 
             <input
               id="fireInsurance"
@@ -365,13 +381,15 @@
               form.controls.fireInsurance.touched
             ) {
               <span id="fireInsurance-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
 
           <div class="field">
-            <label for="keyExchangeFee"> 鍵交換費用 </label>
+            <label for="keyExchangeFee">
+              {{ "calculator.keyExchangeFeeLabel" | transloco }}
+            </label>
 
             <input
               id="keyExchangeFee"
@@ -386,7 +404,7 @@
               form.controls.keyExchangeFee.touched
             ) {
               <span id="keyExchangeFee-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
@@ -395,7 +413,9 @@
         <!-- Cleaning / Support -->
         <div class="field-row">
           <div class="field">
-            <label for="cleaningFee"> クリーニング費用 </label>
+            <label for="cleaningFee">
+              {{ "calculator.cleaningFeeLabel" | transloco }}
+            </label>
 
             <input
               id="cleaningFee"
@@ -410,13 +430,15 @@
               form.controls.cleaningFee.touched
             ) {
               <span id="cleaningFee-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
 
           <div class="field">
-            <label for="supportFee"> 24時間サポート </label>
+            <label for="supportFee">
+              {{ "calculator.supportFeeLabel" | transloco }}
+            </label>
 
             <input
               id="supportFee"
@@ -431,7 +453,7 @@
               form.controls.supportFee.touched
             ) {
               <span id="supportFee-error" class="field-error" role="alert">
-                0以上の金額を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
@@ -443,10 +465,12 @@
       ================================================== -->
 
       <div class="form-section">
-        <h2>前家賃</h2>
+        <h2>{{ "calculator.firstRentTitle" | transloco }}</h2>
 
         <div class="field">
-          <label for="firstRentMonths"> 前家賃（ヶ月） </label>
+          <label for="firstRentMonths">
+            {{ "calculator.firstRentMonthsLabel" | transloco }}
+          </label>
 
           <input
             id="firstRentMonths"
@@ -458,7 +482,7 @@
           />
 
           <span id="firstRentMonths-help" class="field-help">
-            契約時に前払いする家賃の月数を入力してください。
+            {{ "calculator.firstRentHelp" | transloco }}
           </span>
 
           @if (
@@ -470,9 +494,9 @@
                 form.controls.firstRentMonths.hasError("required") ||
                 form.controls.firstRentMonths.hasError("min")
               ) {
-                0以上の整数を入力してください。
+                {{ "calculator.errorMinZero" | transloco }}
               } @else if (form.controls.firstRentMonths.hasError("integer")) {
-                整数を入力してください。
+                {{ "calculator.errorInteger" | transloco }}
               }
             </span>
           }
@@ -481,8 +505,7 @@
 
       <!-- Bottom disclaimer -->
       <p class="form-disclaimer">
-        ※ クリーニング費用・24時間サポートなど、
-        契約に含まれない費用は「0」を入力してください。
+        {{ "calculator.formDisclaimer" | transloco }}
       </p>
     </form>
   </div>

@@ -1,32 +1,98 @@
 {
   "sidebar": {
-    "role": "Разработчик",
+    "role": "Инженер-программист",
     "nav": {
-      "about": "обо мне",
-      "projects": "проекты",
-      "experience": "опыт",
-      "contact": "контакты"
+      "about": "О себе",
+      "projects": "Проекты",
+      "experience": "Опыт работы",
+      "contact": "Контакты"
     }
   },
   "stack": {
-    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
-    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
-    "database": { "key": "База данных", "value": "SQL Server, PostgreSQL" },
+    "frontend": {
+      "key": "Фронтенд",
+      "value": "Angular, TypeScript"
+    },
+    "backend": {
+      "key": "Бэкенд",
+      "value": "ASP.NET Core, C#"
+    },
+    "database": {
+      "key": "База данных",
+      "value": "PostgreSQL, SQL Server"
+    },
     "languages": {
       "key": "Языки",
-      "US": "Анг",
-      "RU": "Рус",
-      "JP": "Япн",
-      "UZ": "Узб",
-      "value": "Узб · Рус · Анг ·  Япн"
+      "US": "Английский",
+      "RU": "Русский",
+      "JP": "Японский",
+      "UZ": "Узбекский",
+      "value": "Узбекский, Русский, Английский, Японский"
     },
-    "location": { "key": "Местоположение", "value": "Айти, Япония 🇯🇵" }
+    "location": {
+      "key": "Местоположение",
+      "value": "Префектура Айти, Япония 🇯🇵"
+    }
   },
   "tools": {
     "home": "Главная",
     "calculator": "Калькулятор",
     "seat_generator": "Генератор мест",
-    "furigana_reader": "Ридер фуриганы",
+    "furigana_reader": "Фуригана ридер",
     "time_tracker": "Трекер времени"
+  },
+  "calculator": {
+    "title": "Симулятор начальных расходов на аренду",
+    "description": "Легко рассчитайте деньги, необходимые для переезда.",
+    "initialCostEstimate": "Ориентировочная первоначальная стоимость",
+    "monthlyCost": "Ежемесячные расходы",
+    "breakdown": "Детализация расходов",
+    "rentRelated": "Связанные с арендой",
+    "firstRent": "Первая аренда",
+    "proratedRent": "Пропорциональная аренда",
+    "contractCosts": "Расходы на договор",
+    "deposit": "Депозит",
+    "keyMoney": "Ключевые деньги",
+    "brokerageFee": "Брокерская комиссия",
+    "guarantorFee": "Плата поручителю",
+    "moveInCosts": "Расходы на въезд",
+    "fireInsurance": "Страхование от пожара",
+    "keyExchangeFee": "Плата за замену ключа",
+    "cleaningFee": "Плата за уборку",
+    "support24h": "Поддержка 24ч",
+    "proratedNote": "※ Поскольку установлена дата въезда, рассчитывается пропорциональная аренда (текущий месяц) + первая аренда.",
+    "disclaimer": "※ Указанные суммы являются ориентировочными. Фактические начальные расходы зависят от объекта, условий договора и агентства недвижимости.",
+    "invalidTitle": "Пожалуйста, проверьте введенные данные",
+    "invalidDescription": "Введите правильную сумму, чтобы рассчитать начальные расходы.",
+    "presets": {
+      "cheap": "Дешево",
+      "standard": "Стандарт",
+      "expensive": "Дорого"
+    },
+    "reset": "Сброс",
+    "basicInfo": "Основная информация",
+    "rentLabel": "Аренда (в месяц)",
+    "errorMinZero": "Пожалуйста, введите сумму 0 или больше.",
+    "managementFeeLabel": "Плата за управление / общее (в месяц)",
+    "moveInDateLabel": "Дата въезда (необязательно)",
+    "moveInDateHelp": "Установка даты въезда рассчитывает пропорциональную аренду (текущий месяц) + первую аренду.",
+    "errorPastDate": "Пожалуйста, выберите дату с сегодняшнего дня.",
+    "contractCostsTitle": "Расходы на договор",
+    "depositMonthsLabel": "Депозит (месяцы)",
+    "keyMoneyMonthsLabel": "Ключевые деньги (месяцы)",
+    "brokerageMonthsLabel": "Брокерская комиссия (месяцы)",
+    "errorBrokerageMax": "Законный максимум — 1 месяц.",
+    "guarantorRateLabel": "Плата поручителю (%)",
+    "errorRateRange": "Пожалуйста, введите ставку от 0 до 100%.",
+    "moveInCostsTitle": "Расходы на въезд",
+    "fireInsuranceLabel": "Страховка от пожара",
+    "keyExchangeFeeLabel": "Плата за замену ключа",
+    "cleaningFeeLabel": "Плата за уборку",
+    "supportFeeLabel": "Поддержка 24ч",
+    "firstRentTitle": "Первая аренда",
+    "firstRentMonthsLabel": "Первая аренда (месяцы)",
+    "firstRentHelp": "Пожалуйста, введите количество месяцев аренды, подлежащих предоплате при заключении договора.",
+    "errorInteger": "Пожалуйста, введите целое число.",
+    "formDisclaimer": "※ Для расходов, не включенных в договор, таких как уборка и поддержка 24ч, пожалуйста, введите \"0\"."
   }
 }

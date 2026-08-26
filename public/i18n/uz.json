@@ -1,35 +1,98 @@
 {
   "sidebar": {
-    "role": "Dasturchi",
+    "role": "Dasturiy injinir",
     "nav": {
-      "about": "men haqimda",
-      "projects": "loyihalar",
-      "experience": "tajriba",
-      "contact": "bog'lanish"
+      "about": "Men haqimda",
+      "projects": "Loyihalar",
+      "experience": "Ish tajribasi",
+      "contact": "Aloqa"
     }
   },
   "stack": {
-    "frontend": { "key": "Frontend", "value": "Angular, TypeScript" },
-    "backend": { "key": "Backend", "value": "ASP.NET Core, C#" },
+    "frontend": {
+      "key": "Frontend",
+      "value": "Angular, TypeScript"
+    },
+    "backend": {
+      "key": "Backend",
+      "value": "ASP.NET Core, C#"
+    },
     "database": {
       "key": "Ma'lumotlar bazasi",
-      "value": "SQL Server, PostgreSQL"
+      "value": "PostgreSQL, SQL Server"
     },
     "languages": {
       "key": "Tillar",
-      "US": "Eng",
+      "US": "Ingliz",
       "RU": "Rus",
-      "JP": "Jap",
-      "UZ": "Uzb",
-      "value": "O'zb · Rus · Eng · Jap"
+      "JP": "Yapon",
+      "UZ": "O'zbek",
+      "value": "O'zbek, Rus, Ingliz, Yapon"
     },
-    "location": { "key": "Joylashuv", "value": "Aichi, Yaponiya 🇯🇵" }
+    "location": {
+      "key": "Joylashuv",
+      "value": "Aichi prefekturasi, Yaponiya 🇯🇵"
+    }
   },
   "tools": {
     "home": "Bosh sahifa",
     "calculator": "Kalkulyator",
-    "seat_generator": "Joy generatori",
+    "seat_generator": "O'rindiq generatori",
     "furigana_reader": "Furigana o'quvchi",
-    "time_tracker": "Vaqt kuzatuvchisi"
+    "time_tracker": "Vaqt kuzatuvchi"
+  },
+  "calculator": {
+    "title": "Ijara boshlang'ich xarajatlari simulyatori",
+    "description": "Ijaradan ko'chib o'tish uchun kerak bo'lgan pulni oson hisoblang.",
+    "initialCostEstimate": "Boshlang'ich xarajatlar taxminiy",
+    "monthlyCost": "Oylik xarajat",
+    "breakdown": "Xarajatlar tafsiloti",
+    "rentRelated": "Ijara bilan bog'liq",
+    "firstRent": "Oldindan to'lov",
+    "proratedRent": "Kunlik ijara",
+    "contractCosts": "Shartnoma xarajatlari",
+    "deposit": "Zalog",
+    "keyMoney": "Kalit puli (Reikin)",
+    "brokerageFee": "Posrednik komissiyasi",
+    "guarantorFee": "Kafolat kompaniyasi",
+    "moveInCosts": "Ko'chib kirish xarajatlari",
+    "fireInsurance": "Yong'in sug'urtasi",
+    "keyExchangeFee": "Kalit almashtirish",
+    "cleaningFee": "Tozalash xarajati",
+    "support24h": "24 soatlik qo'llab-quvvatlash",
+    "proratedNote": "※ Ko'chib kirish sanasi belgilanganligi sababli, joriy oyning kunlik ijarasi + oldindan to'lov hisoblanmoqda.",
+    "disclaimer": "※ Ko'rsatilgan summalar taxminiy. Haqiqiy boshlang'ich xarajatlar uy-joy, shartnoma shartlari va ko'chmas mulk kompaniyasiga qarab farq qiladi.",
+    "invalidTitle": "Iltimos, kiritilgan ma'lumotlarni tekshiring",
+    "invalidDescription": "Boshlang'ich xarajatlarni hisoblash uchun to'g'ri summani kiriting.",
+    "presets": {
+      "cheap": "Arzon",
+      "standard": "Standart",
+      "expensive": "Qimmat"
+    },
+    "reset": "Qayta sozlash",
+    "basicInfo": "Asosiy ma'lumot",
+    "rentLabel": "Ijara (oylik)",
+    "errorMinZero": "Iltimos, 0 yoki undan yuqori summani kiriting.",
+    "managementFeeLabel": "Boshqaruv / umumiy xarajat (oylik)",
+    "moveInDateLabel": "Ko'chib kirish sanasi (ixtiyoriy)",
+    "moveInDateHelp": "Ko'chib kirish sanasini belgilash joriy oyning kunlik ijarasi + oldindan to'lovni hisoblaydi.",
+    "errorPastDate": "Iltimos, bugundan boshlab sanani tanlang.",
+    "contractCostsTitle": "Shartnoma xarajatlari",
+    "depositMonthsLabel": "Zalog (oy)",
+    "keyMoneyMonthsLabel": "Kalit puli (oy)",
+    "brokerageMonthsLabel": "Posrednik komissiyasi (oy)",
+    "errorBrokerageMax": "Qonuniy maksimum 1 oy.",
+    "guarantorRateLabel": "Kafolat kompaniyasi (%)",
+    "errorRateRange": "Iltimos, 0 dan 100% gacha stavkani kiriting.",
+    "moveInCostsTitle": "Ko'chib kirish xarajatlari",
+    "fireInsuranceLabel": "Yong'in sug'urtasi",
+    "keyExchangeFeeLabel": "Kalit almashtirish xarajati",
+    "cleaningFeeLabel": "Tozalash xarajati",
+    "supportFeeLabel": "24 soatlik qo'llab-quvvatlash",
+    "firstRentTitle": "Oldindan to'lov",
+    "firstRentMonthsLabel": "Oldindan to'lov (oy)",
+    "firstRentHelp": "Shartnoma tuzish vaqtida oldindan to'lanadigan ijara oylar sonini kiriting.",
+    "errorInteger": "Iltimos, butun son kiriting.",
+    "formDisclaimer": "※ Tozalash xarajati, 24 soatlik qo'llab-quvvatlash kabi shartnomaga kirmagan xarajatlar uchun \"0\" kiriting."
   }
 }
