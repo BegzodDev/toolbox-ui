@@ -117,3 +117,35 @@ main {
     }
   }
 }
+
+.mobile-nav__arg {
+  color: #56558f;
+  text-decoration: none;
+  cursor: pointer;
+
+  // clickable ekanini biroz sezdiradi
+  padding: 2px 5px;
+  border-radius: 3px;
+
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease;
+
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: #d96f6f;
+  &:hover {
+    color: #d96f6f;
+    background-color: rgba(217, 111, 111, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #d96f6f;
+    outline-offset: 2px;
+  }
+
+  &.active {
+    color: #d96f6f;
+    font-weight: 600;
+  }
+}

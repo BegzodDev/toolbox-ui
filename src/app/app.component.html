@@ -7,37 +7,16 @@
         <app-language-changer></app-language-changer>
       }
     </div>
-    <nav class="mobile-nav" aria-label="Section navigation">
+    <nav class="mobile-nav" aria-label="Tool navigation">
+      <span style="padding-bottom: 3px">PG</span>
       <span class="mobile-nav__prompt">&#10095;</span>
-      <span class="mobile-nav__cmd">nav</span>
-      <a
-        href="#about"
-        class="mobile-nav__arg"
-        [class.active]="activeSection() === 'about'"
-        (click)="setActiveSection('about')"
-        >about</a
-      >
-      <a
-        href="#projects"
-        class="mobile-nav__arg"
-        [class.active]="activeSection() === 'projects'"
-        (click)="setActiveSection('projects')"
-        >projects</a
-      >
-      <a
-        href="#contracts"
-        class="mobile-nav__arg"
-        [class.active]="activeSection() === 'contracts'"
-        (click)="setActiveSection('contracts')"
-        >experience</a
-      >
-      <a
-        href="#contact"
-        class="mobile-nav__arg"
-        [class.active]="activeSection() === 'contact'"
-        (click)="setActiveSection('contact')"
-        >contact</a
-      >
+
+      @for (item of navItems; track item.route) {
+        <a href="{{ item.route }}" class="mobile-nav__arg">
+          {{ item.label | transloco }}
+        </a>
+      }
+
       <span class="mobile-nav__cursor"></span>
     </nav>
   </div>
