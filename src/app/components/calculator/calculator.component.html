@@ -119,7 +119,8 @@
         <!-- Explanation -->
         @if (result.proratedRent > 0) {
           <p class="calculation-note">
-            ※ 入居予定日を設定しているため、日割り家賃を計算しています。
+            ※
+            入居予定日を設定しているため、日割り家賃（当月分）＋前家賃を計算しています。
           </p>
         }
 
@@ -170,10 +171,18 @@
         <div class="field">
           <label for="rent"> 家賃（月額） </label>
 
-          <input id="rent" type="number" min="0" formControlName="rent" />
+          <input
+            id="rent"
+            type="number"
+            min="0"
+            formControlName="rent"
+            aria-describedby="rent-error"
+          />
 
           @if (form.controls.rent.invalid && form.controls.rent.touched) {
-            <span class="field-error"> 0以上の金額を入力してください。 </span>
+            <span id="rent-error" class="field-error" role="alert">
+              0以上の金額を入力してください。
+            </span>
           }
         </div>
 
@@ -186,18 +195,41 @@
             type="number"
             min="0"
             formControlName="managementFee"
+            aria-describedby="managementFee-error"
           />
+
+          @if (
+            form.controls.managementFee.invalid &&
+            form.controls.managementFee.touched
+          ) {
+            <span id="managementFee-error" class="field-error" role="alert">
+              0以上の金額を入力してください。
+            </span>
+          }
         </div>
 
         <!-- Move in date -->
         <div class="field">
           <label for="moveInDate"> 入居予定日（任意） </label>
 
-          <input id="moveInDate" type="date" formControlName="moveInDate" />
+          <input
+            id="moveInDate"
+            type="date"
+            formControlName="moveInDate"
+            aria-describedby="moveInDate-help moveInDate-error"
+          />
 
-          <span class="field-help">
-            入居日を設定すると日割り家賃を計算します。
+          <span id="moveInDate-help" class="field-help">
+            入居日を設定すると、当月分の日割り家賃＋前家賃を計算します。
           </span>
+
+          @if (
+            form.controls.moveInDate.invalid && form.controls.moveInDate.touched
+          ) {
+            <span id="moveInDate-error" class="field-error" role="alert">
+              今日以降の日付を選択してください。
+            </span>
+          }
         </div>
       </div>
 
@@ -219,7 +251,17 @@
               min="0"
               step="0.5"
               formControlName="depositMonths"
+              aria-describedby="depositMonths-error"
             />
+
+            @if (
+              form.controls.depositMonths.invalid &&
+              form.controls.depositMonths.touched
+            ) {
+              <span id="depositMonths-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
 
           <div class="field">
@@ -231,7 +273,17 @@
               min="0"
               step="0.5"
               formControlName="keyMoneyMonths"
+              aria-describedby="keyMoneyMonths-error"
             />
+
+            @if (
+              form.controls.keyMoneyMonths.invalid &&
+              form.controls.keyMoneyMonths.touched
+            ) {
+              <span id="keyMoneyMonths-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
         </div>
 
@@ -244,9 +296,24 @@
               id="brokerageMonths"
               type="number"
               min="0"
+              max="1"
               step="0.5"
               formControlName="brokerageMonths"
+              aria-describedby="brokerageMonths-error"
             />
+
+            @if (
+              form.controls.brokerageMonths.invalid &&
+              form.controls.brokerageMonths.touched
+            ) {
+              <span id="brokerageMonths-error" class="field-error" role="alert">
+                @if (form.controls.brokerageMonths.hasError("max")) {
+                  法定上限は1ヶ月です。
+                } @else {
+                  0以上の金額を入力してください。
+                }
+              </span>
+            }
           </div>
 
           <div class="field">
@@ -258,13 +325,14 @@
               min="0"
               max="100"
               formControlName="guarantorRate"
+              aria-describedby="guarantorRate-error"
             />
 
             @if (
               form.controls.guarantorRate.invalid &&
               form.controls.guarantorRate.touched
             ) {
-              <span class="field-error">
+              <span id="guarantorRate-error" class="field-error" role="alert">
                 保証料率は0〜100%で入力してください。
               </span>
             }
@@ -289,7 +357,17 @@
               type="number"
               min="0"
               formControlName="fireInsurance"
+              aria-describedby="fireInsurance-error"
             />
+
+            @if (
+              form.controls.fireInsurance.invalid &&
+              form.controls.fireInsurance.touched
+            ) {
+              <span id="fireInsurance-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
 
           <div class="field">
@@ -300,7 +378,17 @@
               type="number"
               min="0"
               formControlName="keyExchangeFee"
+              aria-describedby="keyExchangeFee-error"
             />
+
+            @if (
+              form.controls.keyExchangeFee.invalid &&
+              form.controls.keyExchangeFee.touched
+            ) {
+              <span id="keyExchangeFee-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
         </div>
 
@@ -314,7 +402,17 @@
               type="number"
               min="0"
               formControlName="cleaningFee"
+              aria-describedby="cleaningFee-error"
             />
+
+            @if (
+              form.controls.cleaningFee.invalid &&
+              form.controls.cleaningFee.touched
+            ) {
+              <span id="cleaningFee-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
 
           <div class="field">
@@ -325,7 +423,17 @@
               type="number"
               min="0"
               formControlName="supportFee"
+              aria-describedby="supportFee-error"
             />
+
+            @if (
+              form.controls.supportFee.invalid &&
+              form.controls.supportFee.touched
+            ) {
+              <span id="supportFee-error" class="field-error" role="alert">
+                0以上の金額を入力してください。
+              </span>
+            }
           </div>
         </div>
       </div>
@@ -346,9 +454,10 @@
             min="0"
             step="1"
             formControlName="firstRentMonths"
+            aria-describedby="firstRentMonths-help firstRentMonths-error"
           />
 
-          <span class="field-help">
+          <span id="firstRentMonths-help" class="field-help">
             契約時に前払いする家賃の月数を入力してください。
           </span>
 
@@ -356,7 +465,16 @@
             form.controls.firstRentMonths.invalid &&
             form.controls.firstRentMonths.touched
           ) {
-            <span class="field-error"> 0以上の整数を入力してください。 </span>
+            <span id="firstRentMonths-error" class="field-error" role="alert">
+              @if (
+                form.controls.firstRentMonths.hasError("required") ||
+                form.controls.firstRentMonths.hasError("min")
+              ) {
+                0以上の整数を入力してください。
+              } @else if (form.controls.firstRentMonths.hasError("integer")) {
+                整数を入力してください。
+              }
+            </span>
           }
         </div>
       </div>

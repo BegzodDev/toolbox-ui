@@ -59,10 +59,10 @@ interface RentalPreset {
 }
 
 /**
- * Brokerage fee tax.
+ * Brokerage fee consumption tax (10%).
  *
- * MVP:
- * brokerage fee + 10% tax
+ * Legal maximum brokerage fee in Japan is 1 month rent
+ * + consumption tax (10%), capped at 1.1 months total.
  */
 const BROKERAGE_TAX_RATE = 10;
 
@@ -152,6 +152,7 @@ export class CalculatorComponent {
 
     brokerageMonths: this.fb.control(DEFAULT_INPUT.brokerageMonths, [
       Validators.min(0),
+      Validators.max(1),
     ]),
 
     guarantorRate: this.fb.control(DEFAULT_INPUT.guarantorRate, [
@@ -174,18 +175,50 @@ export class CalculatorComponent {
     supportFee: this.fb.control(DEFAULT_INPUT.supportFee, [Validators.min(0)]),
 
     firstRentMonths: this.fb.control(DEFAULT_INPUT.firstRentMonths, [
+      Validators.required,
       Validators.min(0),
-      Validators.pattern(/^\d+$/),
+      (control) => (Number.isInteger(control.value) ? null : { integer: true }),
     ]),
 
-    moveInDate: this.fb.control<string | null>(DEFAULT_INPUT.moveInDate),
+    moveInDate: this.fb.control<string | null>(DEFAULT_INPUT.moveInDate, [
+      (control) => {
+        if (!control.value) {
+          return null;
+        }
+
+        const date = this.parseDate(control.value);
+
+        if (!date) {
+          return { invalidDate: true };
+        }
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        if (date < today) {
+          return { pastDate: true };
+        }
+
+        return null;
+      },
+    ]),
   });
 
   /**
-   * Convert Reactive Form changes into a Signal.
+   * Convert Reactive Form value changes into a Signal.
    */
   private readonly formValue = toSignal(this.form.valueChanges, {
     initialValue: this.form.getRawValue(),
+  });
+
+  /**
+   * Convert Reactive Form status changes into a Signal.
+   *
+   * This ensures `result()` re-computes when validation state
+   * changes even if the raw value has not changed.
+   */
+  private readonly formStatus = toSignal(this.form.statusChanges, {
+    initialValue: this.form.status,
   });
 
   /**
@@ -194,11 +227,15 @@ export class CalculatorComponent {
    * If the form is invalid, no calculation is performed.
    */
   readonly result = computed<RentalCostResult | null>(() => {
+    // Explicitly read both signals so Angular tracks them.
+    this.formValue();
+    this.formStatus();
+
     if (this.form.invalid) {
       return null;
     }
 
-    return this.calculate(this.formValue() as RentalCostInput);
+    return this.calculate(this.form.getRawValue());
   });
 
   /**
@@ -241,6 +278,8 @@ export class CalculatorComponent {
    * 仲介手数料
    *
    * 家賃 × 仲介手数料ヶ月 × 1.10
+   *
+   * Legal maximum = 1 month rent + 10% tax (1.1 months total).
    */
   private calculateBrokerageFee(input: RentalCostInput): number {
     const base = this.safe(input.rent) * this.safe(input.brokerageMonths);

@@ -1,13 +1,42 @@
+/* ============================================================
+   Rental Calculator — Complete Styles
+   ============================================================ */
+
 .calc-page {
   max-width: 1040px;
   margin: 0 auto;
   padding: 40px 24px 80px;
 }
 
+/* ---- Header ---- */
 .calc-header {
   margin-bottom: 32px;
 }
 
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+
+.calc-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+
+.lead {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+
+/* ---- Layout ---- */
 .calc-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -30,7 +59,10 @@
   }
 }
 
-/* ---- Result summary ---- */
+/* ============================================================
+   RESULT
+   ============================================================ */
+
 .result-card {
   background: var(--bg-panel);
   border: 1px solid var(--line);
@@ -38,18 +70,21 @@
   padding: 20px 24px;
   margin-bottom: 16px;
 }
+
 .result-card__label {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-faint);
   margin-bottom: 6px;
 }
+
 .result-card__value {
   font-family: var(--font-mono);
   font-size: 32px;
   font-weight: 700;
   color: var(--accent);
 }
+
 .result-card--secondary .result-card__value {
   font-size: 22px;
   color: var(--text);
@@ -59,11 +94,14 @@
   margin-top: 28px;
   margin-bottom: 12px;
   font-size: 18px;
+  color: var(--text);
 }
 
+/* ---- Breakdown ---- */
 .breakdown-group {
   margin-bottom: 16px;
 }
+
 .breakdown-group h3 {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -73,6 +111,7 @@
   margin-bottom: 8px;
   font-weight: 600;
 }
+
 .breakdown-row {
   display: flex;
   justify-content: space-between;
@@ -82,9 +121,22 @@
   font-size: 14px;
   color: var(--text);
 }
+
 .breakdown-row.muted {
   color: var(--text-faint);
   opacity: 0.65;
+}
+
+/* ---- Notes & Disclaimer ---- */
+.calculation-note {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: var(--bg-subtle, rgba(128, 128, 128, 0.08));
+  border-radius: var(--radius);
+  font-size: 12px;
+  color: var(--text-dim);
+  border-left: 3px solid var(--accent);
+  line-height: 1.5;
 }
 
 .disclaimer {
@@ -94,7 +146,32 @@
   line-height: 1.6;
 }
 
-/* ---- Form ---- */
+/* ---- Empty state (invalid form) ---- */
+.result-empty {
+  text-align: center;
+  padding: 64px 24px;
+  background: var(--bg-panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--text-faint);
+}
+
+.result-empty h2 {
+  font-size: 18px;
+  color: var(--text-dim);
+  margin-bottom: 8px;
+  margin-top: 0;
+}
+
+.result-empty p {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ============================================================
+   FORM
+   ============================================================ */
+
 .calc-form {
   background: var(--bg-panel);
   border: 1px solid var(--line);
@@ -105,12 +182,14 @@
   gap: 16px;
 }
 
+/* ---- Presets ---- */
 .preset-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   margin-bottom: 4px;
 }
+
 .preset-btn,
 .reset-btn {
   font-family: var(--font-mono);
@@ -125,25 +204,51 @@
     border-color 0.15s,
     color 0.15s;
 }
+
 .preset-btn:hover,
 .reset-btn:hover {
   border-color: var(--accent);
   color: var(--accent);
 }
+
 .reset-btn {
   margin-left: auto;
 }
 
+/* ---- Form sections ---- */
+.form-section {
+  border-top: 1px solid var(--line-soft);
+  padding-top: 16px;
+  margin-top: 4px;
+}
+
+.form-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+  margin-top: 0;
+}
+
+.form-section h2 {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  margin-top: 0;
+}
+
+/* ---- Fields ---- */
 .field {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
+
 .field label {
   font-family: var(--font-mono);
   font-size: 12px;
   color: var(--text-dim);
 }
+
 .field input {
   font-family: var(--font-sans);
   font-size: 14px;
@@ -152,17 +257,35 @@
   border: 1px solid var(--line);
   background: var(--bg);
   color: var(--text);
+  width: 100%;
+  box-sizing: border-box;
 }
+
 .field input:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
   border-color: var(--accent);
 }
-.field-error {
-  font-size: 11px;
-  color: var(--accent-dim);
+
+.field input:invalid {
+  border-color: var(--accent-dim, #e74c3c);
 }
 
+/* ---- Help text ---- */
+.field-help {
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.5;
+}
+
+/* ---- Error messages ---- */
+.field-error {
+  font-size: 11px;
+  color: var(--accent-dim, #e74c3c);
+  line-height: 1.4;
+}
+
+/* ---- Field rows (2-column) ---- */
 .field-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -173,4 +296,12 @@
   .field-row {
     grid-template-columns: 1fr;
   }
+}
+
+/* ---- Form disclaimer ---- */
+.form-disclaimer {
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--text-faint);
+  line-height: 1.5;
 }
