@@ -1,6 +1,6 @@
 [build]
   command = "npm run build"
-  publish = "dist/toolbox-ui/browser"
+  publish = "dist/toolbox-ui"
 
 [[plugins]]
   package = "@netlify/angular-runtime"
