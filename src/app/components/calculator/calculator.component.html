@@ -167,295 +167,347 @@
       ================================================== -->
 
       <div class="form-section">
-        <h2>{{ "calculator.basicInfo" | transloco }}</h2>
+        <div>
+          <h2>{{ "calculator.basicInfo" | transloco }}</h2>
 
-        <!-- Rent -->
-        <div class="field">
-          <label for="rent"> {{ "calculator.rentLabel" | transloco }} </label>
-
-          <input
-            id="rent"
-            type="number"
-            min="0"
-            formControlName="rent"
-            aria-describedby="rent-error"
-          />
-
-          @if (form.controls.rent.invalid && form.controls.rent.touched) {
-            <span id="rent-error" class="field-error" role="alert">
-              {{ "calculator.errorMinZero" | transloco }}
-            </span>
-          }
-        </div>
-
-        <!-- Management fee -->
-        <div class="field">
-          <label for="managementFee">
-            {{ "calculator.managementFeeLabel" | transloco }}
-          </label>
-
-          <input
-            id="managementFee"
-            type="number"
-            min="0"
-            formControlName="managementFee"
-            aria-describedby="managementFee-error"
-          />
-
-          @if (
-            form.controls.managementFee.invalid &&
-            form.controls.managementFee.touched
-          ) {
-            <span id="managementFee-error" class="field-error" role="alert">
-              {{ "calculator.errorMinZero" | transloco }}
-            </span>
-          }
-        </div>
-
-        <!-- Move in date -->
-        <div class="field">
-          <label for="moveInDate">
-            {{ "calculator.moveInDateLabel" | transloco }}
-          </label>
-
-          <input
-            id="moveInDate"
-            type="date"
-            formControlName="moveInDate"
-            aria-describedby="moveInDate-help moveInDate-error"
-          />
-
-          <span id="moveInDate-help" class="field-help">
-            {{ "calculator.moveInDateHelp" | transloco }}
-          </span>
-
-          @if (
-            form.controls.moveInDate.invalid && form.controls.moveInDate.touched
-          ) {
-            <span id="moveInDate-error" class="field-error" role="alert">
-              {{ "calculator.errorPastDate" | transloco }}
-            </span>
-          }
-        </div>
-      </div>
-
-      <!-- =================================================
-           CONTRACT COSTS
-      ================================================== -->
-
-      <div class="form-section">
-        <h2>{{ "calculator.contractCostsTitle" | transloco }}</h2>
-
-        <!-- Deposit / Key money -->
-        <div class="field-row">
+          <!-- Rent -->
           <div class="field">
-            <label for="depositMonths">
-              {{ "calculator.depositMonthsLabel" | transloco }}
-            </label>
+            <label for="rent"> {{ "calculator.rentLabel" | transloco }} </label>
 
             <input
-              id="depositMonths"
+              id="rent"
               type="number"
               min="0"
-              step="0.5"
-              formControlName="depositMonths"
-              aria-describedby="depositMonths-error"
+              formControlName="rent"
+              aria-describedby="rent-error"
             />
 
-            @if (
-              form.controls.depositMonths.invalid &&
-              form.controls.depositMonths.touched
-            ) {
-              <span id="depositMonths-error" class="field-error" role="alert">
+            @if (form.controls.rent.invalid && form.controls.rent.touched) {
+              <span id="rent-error" class="field-error" role="alert">
                 {{ "calculator.errorMinZero" | transloco }}
               </span>
             }
           </div>
 
           <div class="field">
-            <label for="keyMoneyMonths">
-              {{ "calculator.keyMoneyMonthsLabel" | transloco }}
+            <label for="moveInDate">
+              {{ "calculator.moveInDateLabel" | transloco }}
             </label>
 
             <input
-              id="keyMoneyMonths"
-              type="number"
-              min="0"
-              step="0.5"
-              formControlName="keyMoneyMonths"
-              aria-describedby="keyMoneyMonths-error"
+              id="moveInDate"
+              type="date"
+              formControlName="moveInDate"
+              aria-describedby="moveInDate-help moveInDate-error"
             />
 
+            <span id="moveInDate-help" class="field-help">
+              {{ "calculator.moveInDateHelp" | transloco }}
+            </span>
+
             @if (
-              form.controls.keyMoneyMonths.invalid &&
-              form.controls.keyMoneyMonths.touched
+              form.controls.moveInDate.invalid &&
+              form.controls.moveInDate.touched
             ) {
-              <span id="keyMoneyMonths-error" class="field-error" role="alert">
-                {{ "calculator.errorMinZero" | transloco }}
+              <span id="moveInDate-error" class="field-error" role="alert">
+                {{ "calculator.errorPastDate" | transloco }}
               </span>
             }
           </div>
         </div>
-
-        <!-- Brokerage / Guarantor -->
-        <div class="field-row">
+        <div>
+          <h2>&nbsp;</h2>
+          <!-- Management fee -->
           <div class="field">
-            <label for="brokerageMonths">
-              {{ "calculator.brokerageMonthsLabel" | transloco }}
+            <label for="managementFee">
+              {{ "calculator.managementFeeLabel" | transloco }}
             </label>
 
             <input
-              id="brokerageMonths"
+              id="managementFee"
               type="number"
               min="0"
-              max="1"
-              step="0.5"
-              formControlName="brokerageMonths"
-              aria-describedby="brokerageMonths-error"
+              formControlName="managementFee"
+              aria-describedby="managementFee-error"
             />
 
             @if (
-              form.controls.brokerageMonths.invalid &&
-              form.controls.brokerageMonths.touched
+              form.controls.managementFee.invalid &&
+              form.controls.managementFee.touched
             ) {
-              <span id="brokerageMonths-error" class="field-error" role="alert">
-                @if (form.controls.brokerageMonths.hasError("max")) {
-                  {{ "calculator.errorBrokerageMax" | transloco }}
-                } @else {
+              <span id="managementFee-error" class="field-error" role="alert">
+                {{ "calculator.errorMinZero" | transloco }}
+              </span>
+            }
+          </div>
+
+          <div class="field">
+            <label for="firstRentMonths">
+              {{ "calculator.firstRentMonthsLabel" | transloco }}
+            </label>
+
+            <input
+              id="firstRentMonths"
+              type="number"
+              min="0"
+              step="1"
+              formControlName="firstRentMonths"
+              aria-describedby="firstRentMonths-help firstRentMonths-error"
+            />
+
+            <span id="firstRentMonths-help" class="field-help">
+              {{ "calculator.firstRentHelp" | transloco }}
+            </span>
+
+            @if (
+              form.controls.firstRentMonths.invalid &&
+              form.controls.firstRentMonths.touched
+            ) {
+              <span id="firstRentMonths-error" class="field-error" role="alert">
+                @if (
+                  form.controls.firstRentMonths.hasError("required") ||
+                  form.controls.firstRentMonths.hasError("min")
+                ) {
                   {{ "calculator.errorMinZero" | transloco }}
+                } @else if (form.controls.firstRentMonths.hasError("integer")) {
+                  {{ "calculator.errorInteger" | transloco }}
                 }
               </span>
             }
           </div>
-
-          <div class="field">
-            <label for="guarantorRate">
-              {{ "calculator.guarantorRateLabel" | transloco }}
-            </label>
-
-            <input
-              id="guarantorRate"
-              type="number"
-              min="0"
-              max="100"
-              formControlName="guarantorRate"
-              aria-describedby="guarantorRate-error"
-            />
-
-            @if (
-              form.controls.guarantorRate.invalid &&
-              form.controls.guarantorRate.touched
-            ) {
-              <span id="guarantorRate-error" class="field-error" role="alert">
-                {{ "calculator.errorRateRange" | transloco }}
-              </span>
-            }
-          </div>
         </div>
+
+        <!-- Move in date -->
       </div>
 
-      <!-- =================================================
-           MOVE-IN COSTS
-      ================================================== -->
-
       <div class="form-section">
-        <h2>{{ "calculator.moveInCostsTitle" | transloco }}</h2>
+        <!-- =================================================
+             CONTRACT COSTS
+        ================================================== -->
+        <div>
+          <h2>{{ "calculator.contractCostsTitle" | transloco }}</h2>
 
-        <!-- Insurance / Key -->
-        <div class="field-row">
-          <div class="field">
-            <label for="fireInsurance">
-              {{ "calculator.fireInsuranceLabel" | transloco }}
-            </label>
+          <!-- Deposit / Key money -->
+          <div class="field-row">
+            <div class="field">
+              <label for="depositMonths">
+                {{ "calculator.depositMonthsLabel" | transloco }}
+              </label>
 
-            <input
-              id="fireInsurance"
-              type="number"
-              min="0"
-              formControlName="fireInsurance"
-              aria-describedby="fireInsurance-error"
-            />
+              <input
+                id="depositMonths"
+                type="number"
+                min="0"
+                step="0.5"
+                formControlName="depositMonths"
+                aria-describedby="depositMonths-error"
+              />
 
-            @if (
-              form.controls.fireInsurance.invalid &&
-              form.controls.fireInsurance.touched
-            ) {
-              <span id="fireInsurance-error" class="field-error" role="alert">
-                {{ "calculator.errorMinZero" | transloco }}
-              </span>
-            }
+              @if (
+                form.controls.depositMonths.invalid &&
+                form.controls.depositMonths.touched
+              ) {
+                <span id="depositMonths-error" class="field-error" role="alert">
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
+
+            <div class="field">
+              <label for="keyMoneyMonths">
+                {{ "calculator.keyMoneyMonthsLabel" | transloco }}
+              </label>
+
+              <input
+                id="keyMoneyMonths"
+                type="number"
+                min="0"
+                step="0.5"
+                formControlName="keyMoneyMonths"
+                aria-describedby="keyMoneyMonths-error"
+              />
+
+              @if (
+                form.controls.keyMoneyMonths.invalid &&
+                form.controls.keyMoneyMonths.touched
+              ) {
+                <span
+                  id="keyMoneyMonths-error"
+                  class="field-error"
+                  role="alert"
+                >
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
           </div>
 
-          <div class="field">
-            <label for="keyExchangeFee">
-              {{ "calculator.keyExchangeFeeLabel" | transloco }}
-            </label>
+          <!-- Brokerage / Guarantor -->
+          <div class="field-row">
+            <div class="field">
+              <label for="brokerageMonths">
+                {{ "calculator.brokerageMonthsLabel" | transloco }}
+              </label>
 
-            <input
-              id="keyExchangeFee"
-              type="number"
-              min="0"
-              formControlName="keyExchangeFee"
-              aria-describedby="keyExchangeFee-error"
-            />
+              <input
+                id="brokerageMonths"
+                type="number"
+                min="0"
+                max="1"
+                step="0.5"
+                formControlName="brokerageMonths"
+                aria-describedby="brokerageMonths-error"
+              />
 
-            @if (
-              form.controls.keyExchangeFee.invalid &&
-              form.controls.keyExchangeFee.touched
-            ) {
-              <span id="keyExchangeFee-error" class="field-error" role="alert">
-                {{ "calculator.errorMinZero" | transloco }}
-              </span>
-            }
+              @if (
+                form.controls.brokerageMonths.invalid &&
+                form.controls.brokerageMonths.touched
+              ) {
+                <span
+                  id="brokerageMonths-error"
+                  class="field-error"
+                  role="alert"
+                >
+                  @if (form.controls.brokerageMonths.hasError("max")) {
+                    {{ "calculator.errorBrokerageMax" | transloco }}
+                  } @else {
+                    {{ "calculator.errorMinZero" | transloco }}
+                  }
+                </span>
+              }
+            </div>
+
+            <div class="field">
+              <label for="guarantorRate">
+                {{ "calculator.guarantorRateLabel" | transloco }}
+              </label>
+
+              <input
+                id="guarantorRate"
+                type="number"
+                min="0"
+                max="100"
+                formControlName="guarantorRate"
+                aria-describedby="guarantorRate-error"
+              />
+
+              @if (
+                form.controls.guarantorRate.invalid &&
+                form.controls.guarantorRate.touched
+              ) {
+                <span id="guarantorRate-error" class="field-error" role="alert">
+                  {{ "calculator.errorRateRange" | transloco }}
+                </span>
+              }
+            </div>
           </div>
         </div>
+        <div>
+          <!-- =================================================
+             MOVE-IN COSTS
+        ================================================== -->
+          <h2>{{ "calculator.moveInCostsTitle" | transloco }}</h2>
 
-        <!-- Cleaning / Support -->
-        <div class="field-row">
-          <div class="field">
-            <label for="cleaningFee">
-              {{ "calculator.cleaningFeeLabel" | transloco }}
-            </label>
+          <!-- Insurance / Key -->
+          <div class="field-row">
+            <div class="field">
+              <label for="fireInsurance">
+                {{ "calculator.fireInsuranceLabel" | transloco }}
+              </label>
 
-            <input
-              id="cleaningFee"
-              type="number"
-              min="0"
-              formControlName="cleaningFee"
-              aria-describedby="cleaningFee-error"
-            />
+              <input
+                id="fireInsurance"
+                type="number"
+                min="0"
+                formControlName="fireInsurance"
+                aria-describedby="fireInsurance-error"
+              />
 
-            @if (
-              form.controls.cleaningFee.invalid &&
-              form.controls.cleaningFee.touched
-            ) {
-              <span id="cleaningFee-error" class="field-error" role="alert">
-                {{ "calculator.errorMinZero" | transloco }}
-              </span>
-            }
+              @if (
+                form.controls.fireInsurance.invalid &&
+                form.controls.fireInsurance.touched
+              ) {
+                <span id="fireInsurance-error" class="field-error" role="alert">
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
+
+            <div class="field">
+              <label for="keyExchangeFee">
+                {{ "calculator.keyExchangeFeeLabel" | transloco }}
+              </label>
+
+              <input
+                id="keyExchangeFee"
+                type="number"
+                min="0"
+                formControlName="keyExchangeFee"
+                aria-describedby="keyExchangeFee-error"
+              />
+
+              @if (
+                form.controls.keyExchangeFee.invalid &&
+                form.controls.keyExchangeFee.touched
+              ) {
+                <span
+                  id="keyExchangeFee-error"
+                  class="field-error"
+                  role="alert"
+                >
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
           </div>
 
-          <div class="field">
-            <label for="supportFee">
-              {{ "calculator.supportFeeLabel" | transloco }}
-            </label>
+          <!-- Cleaning / Support -->
+          <div class="field-row">
+            <div class="field">
+              <label for="cleaningFee">
+                {{ "calculator.cleaningFeeLabel" | transloco }}
+              </label>
 
-            <input
-              id="supportFee"
-              type="number"
-              min="0"
-              formControlName="supportFee"
-              aria-describedby="supportFee-error"
-            />
+              <input
+                id="cleaningFee"
+                type="number"
+                min="0"
+                formControlName="cleaningFee"
+                aria-describedby="cleaningFee-error"
+              />
 
-            @if (
-              form.controls.supportFee.invalid &&
-              form.controls.supportFee.touched
-            ) {
-              <span id="supportFee-error" class="field-error" role="alert">
-                {{ "calculator.errorMinZero" | transloco }}
-              </span>
-            }
+              @if (
+                form.controls.cleaningFee.invalid &&
+                form.controls.cleaningFee.touched
+              ) {
+                <span id="cleaningFee-error" class="field-error" role="alert">
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
+
+            <div class="field">
+              <label for="supportFee">
+                {{ "calculator.supportFeeLabel" | transloco }}
+              </label>
+
+              <input
+                id="supportFee"
+                type="number"
+                min="0"
+                formControlName="supportFee"
+                aria-describedby="supportFee-error"
+              />
+
+              @if (
+                form.controls.supportFee.invalid &&
+                form.controls.supportFee.touched
+              ) {
+                <span id="supportFee-error" class="field-error" role="alert">
+                  {{ "calculator.errorMinZero" | transloco }}
+                </span>
+              }
+            </div>
           </div>
         </div>
       </div>
@@ -464,44 +516,9 @@
            FIRST RENT
       ================================================== -->
 
-      <div class="form-section">
+      <!-- <div class="form-section">
         <h2>{{ "calculator.firstRentTitle" | transloco }}</h2>
-
-        <div class="field">
-          <label for="firstRentMonths">
-            {{ "calculator.firstRentMonthsLabel" | transloco }}
-          </label>
-
-          <input
-            id="firstRentMonths"
-            type="number"
-            min="0"
-            step="1"
-            formControlName="firstRentMonths"
-            aria-describedby="firstRentMonths-help firstRentMonths-error"
-          />
-
-          <span id="firstRentMonths-help" class="field-help">
-            {{ "calculator.firstRentHelp" | transloco }}
-          </span>
-
-          @if (
-            form.controls.firstRentMonths.invalid &&
-            form.controls.firstRentMonths.touched
-          ) {
-            <span id="firstRentMonths-error" class="field-error" role="alert">
-              @if (
-                form.controls.firstRentMonths.hasError("required") ||
-                form.controls.firstRentMonths.hasError("min")
-              ) {
-                {{ "calculator.errorMinZero" | transloco }}
-              } @else if (form.controls.firstRentMonths.hasError("integer")) {
-                {{ "calculator.errorInteger" | transloco }}
-              }
-            </span>
-          }
-        </div>
-      </div>
+      </div> -->
 
       <!-- Bottom disclaimer -->
       <p class="form-disclaimer">
