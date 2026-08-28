@@ -1,0 +1,766 @@
+:host {
+  display: block;
+  position: relative;
+  font-family: var(--font-mono);
+  animation: fade-up 220ms ease both;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.home {
+  position: relative;
+}
+
+// Faint dot-grid backdrop — decorative only, single subtle layer.
+.home__bg {
+  position: absolute;
+  inset: -1.5rem -1rem auto -1rem;
+  height: 260px;
+  background-image: radial-gradient(var(--line) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  mask-image: linear-gradient(to bottom, black, transparent);
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page-head,
+.toolbar,
+.search-meta,
+.categories,
+.tool-section {
+  position: relative;
+  z-index: 1;
+}
+
+// ---------------------------------------------------------------
+// Page head
+// ---------------------------------------------------------------
+
+.page-head {
+  margin-bottom: 1.75rem;
+
+  &__title {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--text, #e6e6e6);
+    padding-bottom: 0.6rem;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(
+        90deg,
+        var(--accent) 0 34px,
+        var(--line) 34px 100%
+      );
+    }
+  }
+
+  &__blink {
+    display: inline-block;
+    color: var(--accent);
+    animation: blink 1.1s steps(1, end) infinite;
+  }
+
+  &__subtitle {
+    margin: 0.6rem 0 0;
+    font-size: 0.85rem;
+    color: var(--accent);
+
+    &--typed {
+      display: inline-block;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 30ch;
+      max-width: 100%;
+      animation: typing 900ms steps(30, end) 120ms both;
+    }
+  }
+
+  &__desc {
+    margin: 0.35rem 0 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+  }
+}
+
+// ---------------------------------------------------------------
+// Toolbar: search + surprise-me
+// ---------------------------------------------------------------
+
+.toolbar {
+  display: flex;
+  align-items: stretch;
+  gap: 0.6rem;
+  margin-bottom: 0.5rem;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  padding: 0.65rem 1.1rem 0.65rem 0.85rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 12px) 0,
+    100% 12px,
+    100% 100%,
+    12px 100%,
+    0 calc(100% - 12px)
+  );
+  transition:
+    border-color 180ms ease,
+    box-shadow 180ms ease;
+
+  &--focused,
+  &:focus-within {
+    border-color: var(--accent);
+    box-shadow:
+      0 0 0 1px var(--accent-dim),
+      0 0 14px -6px var(--accent);
+  }
+
+  &__prompt {
+    color: var(--accent);
+    font-size: 0.85rem;
+  }
+
+  &__input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text, #e6e6e6);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    min-width: 0;
+
+    &::placeholder {
+      color: var(--text-faint);
+    }
+  }
+
+  &__kbd {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--text-faint);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 0.05rem 0.4rem;
+    line-height: 1.4;
+  }
+
+  &__icon {
+    color: var(--text-faint);
+    font-size: 0.9rem;
+  }
+}
+
+.surprise {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0 1.1rem;
+  cursor: pointer;
+  transform: skewX(-12deg);
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+
+  span {
+    display: inline-block;
+    transform: skewX(12deg);
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: skewX(-12deg) translateY(-1px);
+    box-shadow: 0 8px 18px -14px var(--accent);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  &:active {
+    transform: skewX(-12deg) translateY(0);
+  }
+}
+
+.search-meta {
+  margin: 0.5rem 0 1.25rem;
+  font-size: 0.7rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+
+  &__num {
+    color: var(--accent);
+  }
+}
+
+// ---------------------------------------------------------------
+// Categories (with sliding indicator)
+// ---------------------------------------------------------------
+
+.categories {
+  display: flex;
+  gap: 1.1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--line);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &__indicator {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    height: 2px;
+    background: var(--accent);
+    transition:
+      transform 220ms ease,
+      width 220ms ease;
+    pointer-events: none;
+  }
+
+  &__item {
+    flex: 0 0 auto;
+    background: none;
+    border: none;
+    padding: 0.25rem 0.1rem 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+    cursor: pointer;
+    transition: color 180ms ease;
+
+    &:hover {
+      color: var(--accent-dim, var(--accent));
+    }
+
+    &:focus-visible {
+      outline: 1px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    &--active {
+      color: var(--accent);
+    }
+  }
+}
+
+// ---------------------------------------------------------------
+// Sections
+// ---------------------------------------------------------------
+
+.tool-section {
+  margin-bottom: 2.5rem;
+
+  &__title {
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    color: var(--text-faint);
+    margin: 0 0 1rem;
+  }
+}
+
+// ---------------------------------------------------------------
+// Tool grid + card
+// ---------------------------------------------------------------
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+
+  &--bento {
+    grid-auto-flow: dense;
+  }
+}
+
+.tool-card {
+  --notch: 16px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1.1rem;
+  border: 1px solid var(--line);
+  background: var(--bg-panel);
+  clip-path: polygon(
+    0 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% 100%,
+    var(--notch) 100%,
+    0 calc(100% - var(--notch))
+  );
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  animation: card-in 320ms ease both;
+  animation-delay: calc(var(--i, 0) * 45ms);
+  transition:
+    border-color 180ms ease,
+    transform 180ms ease,
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+
+  // Filled triangle sitting in the cut top-right notch — turns accent on hover.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 var(--notch) var(--notch) 0;
+    border-color: transparent var(--line) transparent transparent;
+    transition: border-color 180ms ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px -18px var(--accent);
+  }
+
+  &:hover::after,
+  &:focus-visible::after {
+    border-color: transparent var(--accent) transparent transparent;
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  &:hover .tool-card__arrow,
+  &:focus-visible .tool-card__arrow {
+    transform: translateX(3px);
+    color: var(--accent);
+  }
+
+  &:hover .tool-card__footer span:last-child,
+  &:focus-visible .tool-card__footer span:last-child {
+    transform: translateX(3px);
+  }
+
+  &:hover .tool-card__index,
+  &:focus-visible .tool-card__index {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  &--hero {
+    grid-column: 1 / -1;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1.5rem 1.75rem;
+
+    .tool-card__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .tool-card__name {
+      font-size: 1.05rem;
+    }
+
+    .tool-card__desc {
+      font-size: 0.85rem;
+    }
+
+    .tool-card__footer {
+      flex: 0 0 auto;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.4rem;
+      border-top: none;
+      padding-top: 0;
+      margin-top: 0;
+      border-left: 1px solid var(--line);
+      padding-left: 1.5rem;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    font-size: 0.68rem;
+    color: var(--text-faint);
+    transition:
+      border-color 180ms ease,
+      color 180ms ease;
+  }
+
+  &__arrow {
+    font-size: 0.9rem;
+    color: var(--text-faint);
+    transition:
+      transform 180ms ease,
+      color 180ms ease;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    color: var(--text, #e6e6e6);
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: var(--text-dim);
+    flex: 1;
+  }
+
+  &__category {
+    font-size: 0.7rem;
+    color: var(--accent-dim, var(--accent));
+    text-transform: lowercase;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.75rem;
+    margin-top: 0.25rem;
+    border-top: 1px solid var(--line);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    color: var(--text-dim);
+
+    span:last-child {
+      display: inline-block;
+      transition: transform 180ms ease;
+    }
+  }
+}
+
+// ---------------------------------------------------------------
+// Empty state
+// ---------------------------------------------------------------
+
+.empty-state {
+  border: 1px dashed var(--line);
+  padding: 2.5rem 1rem;
+  text-align: center;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 16px) 0,
+    100% 16px,
+    100% 100%,
+    16px 100%,
+    0 calc(100% - 16px)
+  );
+
+  &__title {
+    margin: 0 0 0.4rem;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+  }
+
+  &__desc {
+    margin: 0;
+    font-size: 0.75rem;
+    color: var(--text-faint);
+  }
+}
+
+// ---------------------------------------------------------------
+// Animations
+// ---------------------------------------------------------------
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes card-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 30ch;
+  }
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :host,
+  .tool-card,
+  .page-head__blink,
+  .page-head__subtitle--typed {
+    animation: none;
+  }
+
+  .page-head__subtitle--typed {
+    width: auto;
+  }
+
+  .tool-card,
+  .tool-card__arrow,
+  .tool-card__footer span:last-child,
+  .categories__item,
+  .categories__indicator,
+  .search,
+  .surprise {
+    transition: none;
+  }
+
+  .tool-card:hover,
+  .tool-card:focus-visible {
+    transform: none;
+  }
+}
+
+// ---------------------------------------------------------------
+// Responsive
+// ---------------------------------------------------------------
+
+@media (max-width: 1100px) {
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .home__bg {
+    height: 180px;
+  }
+
+  .page-head {
+    margin-bottom: 1.25rem;
+
+    &__title {
+      font-size: 0.95rem;
+    }
+
+    &__subtitle--typed {
+      width: 26ch;
+    }
+  }
+
+  .toolbar {
+    flex-wrap: wrap;
+  }
+
+  .search {
+    width: 100%;
+    flex-basis: 100%;
+    padding: 0.55rem 0.9rem 0.55rem 0.7rem;
+  }
+
+  .surprise {
+    flex: 1;
+    justify-content: center;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .categories {
+    gap: 0.75rem;
+    margin-bottom: 1.4rem;
+  }
+
+  .tool-section {
+    margin-bottom: 1.75rem;
+
+    &__title {
+      margin-bottom: 0.7rem;
+    }
+  }
+
+  // Shrink the grid to a tight two-up layout instead of one wide column.
+  .tool-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.6rem;
+  }
+
+  .tool-card {
+    --notch: 10px;
+    gap: 0.5rem;
+    padding: 0.75rem;
+
+    &__index {
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.6rem;
+    }
+
+    &__name {
+      font-size: 0.72rem;
+      line-height: 1.3;
+    }
+
+    &__desc {
+      font-size: 0.68rem;
+      line-height: 1.4;
+      // Clamp to keep every tile the same compact height.
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    &__category {
+      font-size: 0.62rem;
+    }
+
+    &__footer {
+      padding-top: 0.55rem;
+      margin-top: 0.1rem;
+      font-size: 0.62rem;
+    }
+
+    &:hover,
+    &:focus-visible {
+      transform: none;
+    }
+  }
+
+  .tool-card--hero {
+    grid-column: 1 / -1;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+    padding: 1rem;
+
+    &__index,
+    .tool-card__index {
+      width: 1.9rem;
+      height: 1.9rem;
+      font-size: 0.68rem;
+    }
+
+    .tool-card__top {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    .tool-card__name {
+      font-size: 0.9rem;
+    }
+
+    .tool-card__desc {
+      font-size: 0.76rem;
+      -webkit-line-clamp: unset;
+    }
+
+    .tool-card__footer {
+      flex-direction: row;
+      align-items: center;
+      border-left: none;
+      padding-left: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 0.7rem;
+      margin-top: 0.2rem;
+    }
+  }
+}
+
+// Very small phones — drop to a single, slightly larger column.
+@media (max-width: 420px) {
+  .tool-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tool-card {
+    padding: 0.85rem;
+
+    &__desc {
+      -webkit-line-clamp: 3;
+    }
+  }
+}
