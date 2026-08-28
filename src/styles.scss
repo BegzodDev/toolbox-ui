@@ -1,24 +1,20 @@
-/* You can add global styles to this file, and also import other style files */
-/* ==========================================================
-   Global styles — copy the contents of this file into your
-   existing src/styles.scss (or import it from there).
+@use "sass:color";
 
-   Palette swap: the old dark "code-editor" theme has been
-   replaced with a light theme built from your 5-color set.
-   All component .scss files below are untouched because they
-   only reference the CSS custom properties (var(--...)) — so
-   changing the values here is enough to re-theme the whole app.
+/* You can add global styles to this file, and also import other style files */
+
+/* ==========================================================
+   Global styles
    ========================================================== */
 
-// ---- Base palette (5 colors) --------------------------------
+// ---- Base palette ------------------------------------------
+
 $light-coral: #dd7373;
 $space-indigo: #3b3561;
 $golden-glow: #ead94c;
 $dust-grey: #d1d1d1;
 $tropical-teal: #51a3a3;
 
-// Optional — built-in gradients from the same palette, in case
-// you want to use one on a hero/section background later.
+// Optional gradients
 $gradient-top: linear-gradient(
   0deg,
   $light-coral,
@@ -27,6 +23,7 @@ $gradient-top: linear-gradient(
   $dust-grey,
   $tropical-teal
 );
+
 $gradient-right: linear-gradient(
   90deg,
   $light-coral,
@@ -35,6 +32,7 @@ $gradient-right: linear-gradient(
   $dust-grey,
   $tropical-teal
 );
+
 $gradient-radial: radial-gradient(
   $light-coral,
   $space-indigo,
@@ -44,32 +42,32 @@ $gradient-radial: radial-gradient(
 );
 
 :root {
-  // Surfaces — light theme, so "elevated" gets a touch darker
-  // instead of lighter (the old dark theme did the opposite).
-  --bg: #{lighten($dust-grey, 9%)};
-  --bg-panel: #{$dust-grey};
-  --bg-elevated: #{darken($dust-grey, 6%)};
-  --line: #{darken($dust-grey, 22%)};
-  --line-soft: #{darken($dust-grey, 10%)};
+  // Surfaces
+  --bg: #{color.adjust($dust-grey, $lightness: 9%)};
+  --bg-elevated: #{color.adjust($dust-grey, $lightness: -6%)};
+  --line: #{color.adjust($dust-grey, $lightness: -22%)};
+  --line-soft: #{color.adjust($dust-grey, $lightness: -10%)};
 
   // Text
   --text: #{$space-indigo};
-  --text-dim: #{lighten($space-indigo, 20%)};
-  --text-faint: #{lighten($space-indigo, 34%)};
+  --text-dim: #{color.adjust($space-indigo, $lightness: 20%)};
+  --text-faint: #{color.adjust($space-indigo, $lightness: 34%)};
 
-  // Accent = Light Coral (per your pick)
+  // Accent
   --accent: #{$light-coral};
-  --accent-dim: #{darken($light-coral, 12%)};
-  // Text color for anything placed ON the accent color (buttons)
-  --on-accent: #{darken($space-indigo, 6%)};
+  --accent-dim: #{color.adjust($light-coral, $lightness: -12%)};
 
-  // Reserved from the old theme — not used by the layout files
-  // you sent, kept in case another component (tags/badges) needs it.
-  --tag-bg: #{lighten($tropical-teal, 42%)};
+  // Text on accent
+  --on-accent: #{color.adjust($space-indigo, $lightness: -6%)};
+
+  // Tags
+  --tag-bg: #{color.adjust($tropical-teal, $lightness: 42%)};
 
   --font-sans:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
   --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+
   --radius: 6px;
 }
 
@@ -94,16 +92,17 @@ body {
 a {
   color: var(--accent);
   text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-/* Shared section styles used by every content component */
 section {
   padding: 80px 40px;
   max-width: 880px;
 }
+
 section + section {
   border-top: 1px solid var(--line-soft);
 }
@@ -116,10 +115,11 @@ section + section {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-.section-tag::before {
-  content: "//";
-  color: var(--text-faint);
+
+  &::before {
+    content: "//";
+    color: var(--text-faint);
+  }
 }
 
 h1 {
@@ -128,9 +128,10 @@ h1 {
   letter-spacing: -0.02em;
   line-height: 1.2;
   margin-bottom: 18px;
-}
-h1 .accent {
-  color: var(--accent);
+
+  .accent {
+    color: var(--accent);
+  }
 }
 
 h2 {
@@ -147,28 +148,6 @@ h2 {
   margin-bottom: 32px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-a:focus-visible,
-.btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-@media (max-width: 860px) {
-  section {
-    padding: 56px 24px;
-  }
-  h1 {
-    font-size: 32px;
-  }
-}
-
-/* ---- Buttons (used across hero / contact) ---- */
 .btn {
   font-family: var(--font-mono);
   font-size: 13px;
@@ -180,22 +159,25 @@ a:focus-visible,
     border-color 0.15s,
     color 0.15s;
   display: inline-block;
+
+  &:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    text-decoration: none;
+  }
 }
-.btn:hover {
-  border-color: var(--accent);
-  color: var(--accent);
-  text-decoration: none;
-}
+
 .btn-primary {
   background: var(--accent);
   color: var(--on-accent);
   border-color: var(--accent);
   font-weight: 500;
-}
-.btn-primary:hover {
-  color: var(--on-accent);
-  opacity: 0.88;
-  border-color: var(--accent);
+
+  &:hover {
+    color: var(--on-accent);
+    opacity: 0.88;
+    border-color: var(--accent);
+  }
 }
 
 .reveal-init {
@@ -232,9 +214,29 @@ a:focus-visible,
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   .reveal-init {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 860px) {
+  section {
+    padding: 56px 24px;
+  }
+
+  h1 {
+    font-size: 32px;
   }
 }
