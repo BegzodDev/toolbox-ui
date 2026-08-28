@@ -46,11 +46,12 @@ $gradient-radial: radial-gradient(
 :root {
   // Surfaces — light theme, so "elevated" gets a touch darker
   // instead of lighter (the old dark theme did the opposite).
-  --bg: #{lighten($dust-grey, 9%)};
-  --bg-panel: #{$dust-grey};
-  --bg-elevated: #{darken($dust-grey, 6%)};
-  --line: #{darken($dust-grey, 22%)};
-  --line-soft: #{darken($dust-grey, 10%)};
+  --bg: #{color.adjust($dust-grey, $lightness: 9%)};
+  --bg-elevated: #{color.adjust($dust-grey, $lightness: -6%)};
+  --line: #{color.adjust($dust-grey, $lightness: -22%)};
+  --line-soft: #{color.adjust($dust-grey, $lightness: -10%)};
+
+  --text-dim: #{color.adjust($space-indigo, $lightness: 20%)};
 
   // Text
   --text: #{$space-indigo};
