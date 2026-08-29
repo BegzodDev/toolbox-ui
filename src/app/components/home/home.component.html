@@ -1,29 +1,28 @@
 <section class="home">
   <div class="home__bg" aria-hidden="true"></div>
+  <div class="home__ruler" aria-hidden="true"></div>
 
   <header class="page-head">
-    <h1 class="page-head__title">
-      TOOLS<span class="page-head__blink" aria-hidden="true">_</span>
-    </h1>
-    <p class="page-head__subtitle page-head__subtitle--typed">
-      Small tools. Big convenience.
-    </p>
-    <p class="page-head__desc">
-      Useful utilities for everyday tasks.<br />
-      Fast. Simple. No unnecessary steps.
-    </p>
+    <div class="page-head__intro">
+      <h1 class="page-head__title">Tools</h1>
+      <p class="page-head__subtitle">Small tools. Big convenience.</p>
+      <p class="page-head__desc">
+        Useful utilities for everyday tasks. Fast, simple, no unnecessary steps.
+      </p>
+    </div>
+    <span class="page-head__blink" aria-hidden="true">Toolkit №01</span>
   </header>
 
   <div class="toolbar">
     <div class="search" [class.search--focused]="isSearchFocused()">
       <label class="sr-only" for="tool-search">Search tools</label>
-      <span class="search__prompt" aria-hidden="true">&gt;</span>
+      <span class="search__icon" aria-hidden="true">🔍</span>
       <input
         #searchInput
         id="tool-search"
         type="text"
         class="search__input"
-        placeholder="search tools..."
+        placeholder="Search tools..."
         autocomplete="off"
         spellcheck="false"
         [value]="searchQuery()"
@@ -34,27 +33,19 @@
       @if (searchQuery().length === 0) {
         <kbd class="search__kbd" aria-hidden="true">/</kbd>
       }
-      <span class="search__icon" aria-hidden="true">⌕</span>
     </div>
 
     <button type="button" class="surprise" (click)="surpriseMe()">
-      <span>surprise me</span>
-      <span aria-hidden="true">⚡</span>
+      <span>Surprise me</span>
     </button>
   </div>
 
   <p class="search-meta" aria-live="polite">
-    showing <span class="search-meta__num">{{ filteredTools().length }}</span> /
+    Showing <span class="search-meta__num">{{ filteredTools().length }}</span> /
     {{ totalCount() }} tools
   </p>
 
   <nav class="categories" aria-label="Filter tools by category">
-    <span
-      class="categories__indicator"
-      aria-hidden="true"
-      [style.transform]="'translateX(' + indicator().left + 'px)'"
-      [style.width.px]="indicator().width"
-    ></span>
     @for (cat of categories; track cat.value) {
       <button
         #categoryBtn
@@ -71,7 +62,7 @@
 
   @if (showFeatured()) {
     <section class="tool-section" aria-labelledby="featured-heading">
-      <h2 id="featured-heading" class="tool-section__title">FEATURED TOOLS</h2>
+      <h2 id="featured-heading" class="tool-section__title">Featured tools</h2>
       <div class="tool-grid tool-grid--bento">
         @for (tool of featuredTools(); track tool.id; let i = $index) {
           <a
@@ -84,13 +75,13 @@
               <span class="tool-card__index">{{ indexLabel(i) }}</span>
               <span class="tool-card__arrow" aria-hidden="true">↗</span>
             </span>
-            <h3 class="tool-card__name">{{ tool.name | uppercase }}</h3>
+            <h3 class="tool-card__name">{{ tool.name }}</h3>
             <p class="tool-card__desc">{{ tool.description }}</p>
             <span class="tool-card__category">{{
               tool.category | lowercase
             }}</span>
             <span class="tool-card__footer">
-              <span>OPEN TOOL</span>
+              <span>Open tool</span>
               <span aria-hidden="true">→</span>
             </span>
           </a>
@@ -100,7 +91,7 @@
   }
 
   <section class="tool-section" aria-labelledby="all-tools-heading">
-    <h2 id="all-tools-heading" class="tool-section__title">ALL TOOLS</h2>
+    <h2 id="all-tools-heading" class="tool-section__title">All tools</h2>
 
     @if (hasResults()) {
       <div class="tool-grid">
@@ -110,13 +101,13 @@
               <span class="tool-card__index">{{ indexLabel(i) }}</span>
               <span class="tool-card__arrow" aria-hidden="true">↗</span>
             </span>
-            <h3 class="tool-card__name">{{ tool.name | uppercase }}</h3>
+            <h3 class="tool-card__name">{{ tool.name }}</h3>
             <p class="tool-card__desc">{{ tool.description }}</p>
             <span class="tool-card__category">{{
               tool.category | lowercase
             }}</span>
             <span class="tool-card__footer">
-              <span>OPEN TOOL</span>
+              <span>Open tool</span>
               <span aria-hidden="true">→</span>
             </span>
           </a>
@@ -124,7 +115,7 @@
       </div>
     } @else {
       <div class="empty-state" role="status">
-        <p class="empty-state__title">NO TOOLS FOUND</p>
+        <p class="empty-state__title">No tools found</p>
         <p class="empty-state__desc">Try another search term.</p>
       </div>
     }

@@ -9,7 +9,7 @@ import {
   computed,
   signal,
 } from '@angular/core';
-import { LowerCasePipe, UpperCasePipe } from '@angular/common';
+import { LowerCasePipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 
 export interface Tool {
@@ -99,7 +99,7 @@ const TOOLS: Tool[] = [
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterLink, UpperCasePipe, LowerCasePipe],
+  imports: [RouterLink, LowerCasePipe],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })

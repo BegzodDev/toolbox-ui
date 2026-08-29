@@ -1,12 +1,5 @@
 @use "sass:color";
-
-/* You can add global styles to this file, and also import other style files */
-
-/* ==========================================================
-   Global styles
-   ========================================================== */
-
-// ---- Base palette ------------------------------------------
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
 
 $amber-gold: #f2a541;
 $amber-deep: #c98a34;
@@ -20,10 +13,6 @@ $gradient-right: linear-gradient(90deg, $amber-gold, $teal);
 $gradient-radial: radial-gradient($amber-gold, $teal, $graphite-ink);
 
 :root {
-  // ==========================================================
-  // 🌑 Surfaces
-  // ==========================================================
-
   --bg: #15181d;
   --bg-elevated: #1c2027;
   --bg-sunken: #0f1216;
@@ -31,58 +20,26 @@ $gradient-radial: radial-gradient($amber-gold, $teal, $graphite-ink);
   --line: #2a2f38;
   --line-soft: #232830;
 
-  // ==========================================================
-  // ✍️ Text
-  // ==========================================================
-
   --text: #e7e5df;
   --text-dim: #a8a9ad;
   --text-faint: #6b6f76;
 
-  // ==========================================================
-  // 🔶 Main Accent (warm)
-  // ==========================================================
-
   --accent: #f2a541;
   --accent-dim: #c98a34;
 
-  // ==========================================================
-  // 🌊 Secondary Accent (cool)
-  // ==========================================================
-
   --teal: #45c4b0;
   --teal-dim: #33988a;
-
-  // ==========================================================
-  // 🎨 Project Palette
-  // ==========================================================
 
   --amber-gold: #f2a541;
   --teal-accent: #45c4b0;
   --coral-highlight: #ff6b4a;
   --graphite: #15181d;
 
-  // ==========================================================
-  // 📝 Text on accent
-  // ==========================================================
-
   --on-accent: #15181d;
-
-  // ==========================================================
-  // 🏷️ Tags
-  // ==========================================================
 
   --tag-bg: rgba(69, 196, 176, 0.12);
 
-  // ==========================================================
-  // ✨ Highlight
-  // ==========================================================
-
   --highlight: #ff6b4a;
-
-  // ==========================================================
-  // 🌈 Gradients
-  // ==========================================================
 
   --gradient-primary: linear-gradient(135deg, #f2a541, #ff6b4a);
 
@@ -90,19 +47,11 @@ $gradient-radial: radial-gradient($amber-gold, $teal, $graphite-ink);
 
   --gradient-highlight: linear-gradient(135deg, #45c4b0, #f2a541);
 
-  // ==========================================================
-  // 🔤 Typography
-  // ==========================================================
-
   --font-sans:
     "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
-
-  // ==========================================================
-  // ◼ UI
-  // ==========================================================
-
+  --font-display: "Fraunces", "Georgia", serif;
   --radius: 10px;
 }
 
