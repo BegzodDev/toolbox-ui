@@ -14,7 +14,7 @@
   </header>
 
   <div class="toolbar">
-    <div class="search" [class.search--focused]="isSearchFocused()">
+    <div class="search">
       <label class="sr-only" for="tool-search">Search tools</label>
       <span class="search__icon" aria-hidden="true">🔍</span>
       <input
@@ -27,8 +27,6 @@
         spellcheck="false"
         [value]="searchQuery()"
         (input)="onSearchInput($event)"
-        (focus)="isSearchFocused.set(true)"
-        (blur)="isSearchFocused.set(false)"
       />
       @if (searchQuery().length === 0) {
         <kbd class="search__kbd" aria-hidden="true">/</kbd>
@@ -48,12 +46,11 @@
   <nav class="categories" aria-label="Filter tools by category">
     @for (cat of categories; track cat.value) {
       <button
-        #categoryBtn
         type="button"
         class="categories__item"
         [class.categories__item--active]="selectedCategory() === cat.value"
         [attr.aria-pressed]="selectedCategory() === cat.value"
-        (click)="selectCategory(cat.value, $event.target)"
+        (click)="selectCategory(cat.value)"
       >
         {{ cat.label }}
       </button>

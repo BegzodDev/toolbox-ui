@@ -1,11 +1,8 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
-  QueryList,
   ViewChild,
-  ViewChildren,
   computed,
   signal,
 } from '@angular/core';
@@ -30,11 +27,6 @@ export interface Tool {
 interface CategoryOption {
   label: string;
   value: string;
-}
-
-interface IndicatorRect {
-  left: number;
-  width: number;
 }
 
 const CATEGORIES: CategoryOption[] = [
@@ -103,19 +95,13 @@ const TOOLS: Tool[] = [
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements AfterViewInit {
+export class HomeComponent {
   @ViewChild('searchInput')
   private readonly searchInputRef?: ElementRef<HTMLInputElement>;
-  @ViewChildren('categoryBtn') private readonly categoryButtons?: QueryList<
-    ElementRef<HTMLButtonElement>
-  >;
 
   protected readonly categories = CATEGORIES;
-
   protected readonly searchQuery = signal('');
-  protected readonly selectedCategory = signal<string>('ALL');
-  protected readonly isSearchFocused = signal(false);
-  protected readonly indicator = signal<IndicatorRect>({ left: 0, width: 0 });
+  protected readonly selectedCategory = signal('ALL');
 
   private readonly tools = signal<Tool[]>(TOOLS);
 
@@ -131,6 +117,7 @@ export class HomeComponent implements AfterViewInit {
 
     return this.tools().filter((tool) => {
       const matchesCategory = category === 'ALL' || tool.category === category;
+
       const matchesQuery =
         query.length === 0 ||
         tool.name.toLowerCase().includes(query) ||
@@ -143,6 +130,7 @@ export class HomeComponent implements AfterViewInit {
   protected readonly hasResults = computed(
     () => this.filteredTools().length > 0,
   );
+
   protected readonly showFeatured = computed(
     () =>
       this.selectedCategory() === 'ALL' &&
@@ -151,20 +139,10 @@ export class HomeComponent implements AfterViewInit {
 
   constructor(private readonly router: Router) {}
 
-  ngAfterViewInit(): void {
-    // Position the sliding indicator once the category buttons exist.
-    queueMicrotask(() => this.updateIndicator());
-    this.categoryButtons?.changes.subscribe(() => this.updateIndicator());
-  }
-
-  @HostListener('window:resize')
-  protected onResize(): void {
-    this.updateIndicator();
-  }
-
   @HostListener('document:keydown', ['$event'])
   protected onGlobalKeydown(event: KeyboardEvent): void {
     const target = event.target as HTMLElement | null;
+
     const isTyping =
       target?.tagName === 'INPUT' ||
       target?.tagName === 'TEXTAREA' ||
@@ -181,10 +159,8 @@ export class HomeComponent implements AfterViewInit {
     this.searchQuery.set(value);
   }
 
-  protected selectCategory(value: string, target: EventTarget | null): void {
+  protected selectCategory(value: string): void {
     this.selectedCategory.set(value);
-    queueMicrotask(() => this.updateIndicator());
-    void target;
   }
 
   protected indexLabel(index: number): string {
@@ -193,24 +169,13 @@ export class HomeComponent implements AfterViewInit {
 
   protected surpriseMe(): void {
     const pool = this.tools();
+
     if (pool.length === 0) {
       return;
     }
+
     const pick = pool[Math.floor(Math.random() * pool.length)];
+
     void this.router.navigateByUrl(pick.route);
-  }
-
-  private updateIndicator(): void {
-    const buttons = this.categoryButtons?.toArray() ?? [];
-    const activeIndex = this.categories.findIndex(
-      (c) => c.value === this.selectedCategory(),
-    );
-    const active = buttons[activeIndex]?.nativeElement;
-
-    if (!active) {
-      return;
-    }
-
-    this.indicator.set({ left: active.offsetLeft, width: active.offsetWidth });
   }
 }
