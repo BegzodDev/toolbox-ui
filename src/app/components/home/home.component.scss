@@ -21,7 +21,6 @@
   position: relative;
 }
 
-// Faint graph-paper backdrop — workshop drafting-table feel.
 .home__bg {
   position: absolute;
   inset: -1.5rem -1rem auto -1rem;
@@ -43,7 +42,6 @@
   z-index: 0;
 }
 
-// Ruler ticks along the very top edge — workshop measuring-tape feel.
 .home__ruler {
   position: absolute;
   top: -0.75rem;
@@ -71,10 +69,6 @@
   z-index: 1;
 }
 
-// ---------------------------------------------------------------
-// Page head
-// ---------------------------------------------------------------
-
 .page-head {
   display: flex;
   align-items: flex-start;
@@ -83,7 +77,6 @@
   margin-bottom: 2rem;
   position: relative;
 
-  // Washi-tape strip, top-left — pins the header down like a catalog card.
   &::before {
     content: "";
     position: absolute;
@@ -98,7 +91,6 @@
     z-index: 0;
   }
 
-  // Washi-tape strip, top-right.
   &::after {
     content: "";
     position: absolute;
@@ -167,10 +159,6 @@
   }
 }
 
-// ---------------------------------------------------------------
-// Toolbar: search + surprise-me
-// ---------------------------------------------------------------
-
 .toolbar {
   display: flex;
   align-items: stretch;
@@ -191,17 +179,6 @@
   transition:
     border-color 180ms ease,
     box-shadow 180ms ease;
-
-  &--focused,
-  &:focus-within {
-    border-color: var(--accent);
-    box-shadow: 0 4px 16px -8px rgba(242, 165, 65, 0.45);
-  }
-
-  &__prompt {
-    color: var(--text-faint);
-    font-size: 0.95rem;
-  }
 
   &__input {
     flex: 1;
@@ -235,7 +212,6 @@
   }
 }
 
-// A little ribbon-bookmark tab instead of a skewed hacker button.
 .surprise {
   flex: 0 0 auto;
   position: relative;
@@ -303,10 +279,6 @@
   }
 }
 
-// ---------------------------------------------------------------
-// Categories — folder tabs, active one raised
-// ---------------------------------------------------------------
-
 .categories {
   display: flex;
   gap: 0.3rem;
@@ -317,11 +289,6 @@
   scrollbar-width: none;
 
   &::-webkit-scrollbar {
-    display: none;
-  }
-
-  // No longer a sliding underline — folder tabs don't need it.
-  &__indicator {
     display: none;
   }
 
@@ -361,10 +328,6 @@
   }
 }
 
-// ---------------------------------------------------------------
-// Sections
-// ---------------------------------------------------------------
-
 .tool-section {
   margin-bottom: 2.75rem;
 
@@ -378,10 +341,6 @@
     margin: 0 0 1.1rem;
   }
 }
-
-// ---------------------------------------------------------------
-// Tool grid + card — index-card / card-catalog look
-// ---------------------------------------------------------------
 
 .tool-grid {
   display: grid;
@@ -412,7 +371,6 @@
     transform 200ms ease,
     box-shadow 200ms ease;
 
-  // Grommet hole, top-left — the card-catalog punch.
   &::before {
     content: "";
     position: absolute;
@@ -426,7 +384,6 @@
     transition: border-color 200ms ease;
   }
 
-  // Perforation line under the header row.
   &::after {
     content: "";
     position: absolute;
@@ -589,10 +546,6 @@
   }
 }
 
-// ---------------------------------------------------------------
-// Empty state
-// ---------------------------------------------------------------
-
 .empty-state {
   border: 1.5px dashed var(--line);
   border-radius: 14px;
@@ -613,10 +566,6 @@
     color: var(--text-faint);
   }
 }
-
-// ---------------------------------------------------------------
-// Animations
-// ---------------------------------------------------------------
 
 @keyframes fade-up {
   from {
@@ -672,10 +621,6 @@
     transform: none;
   }
 }
-
-// ---------------------------------------------------------------
-// Responsive
-// ---------------------------------------------------------------
 
 @media (max-width: 1100px) {
   .tool-grid {
