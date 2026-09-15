@@ -20,13 +20,13 @@ export const routes: Routes = [
         (m) => m.SeatGeneratorComponent,
       ),
   },
-  {
-    path: 'student-seat-randomizer',
-    loadComponent: () =>
-      import('./components/student-seat-randomizer/student-seat-randomizer.component').then(
-        (m) => m.StudentSeatRandomizerComponent,
-      ),
-  },
+  // {
+  //   path: 'student-seat-randomizer',
+  //   loadComponent: () =>
+  //     import('./components/student-seat-randomizer/student-seat-randomizer.component').then(
+  //       (m) => m.StudentSeatRandomizerComponent,
+  //     ),
+  // },
   {
     path: 'furigana-reader',
     loadComponent: () =>

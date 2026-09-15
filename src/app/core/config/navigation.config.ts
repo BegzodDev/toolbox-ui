@@ -11,11 +11,11 @@ export const NAV_ITEMS: NavItem[] = [
     ext: 'calculate.ts',
     route: '/calculator',
   },
-  {
-    label: 'tools.seat_generator',
-    ext: 'seat_gen.tsx',
-    route: '/student-seat-randomizer',
-  },
+  // {
+  //   label: 'tools.seat_generator',
+  //   ext: 'seat_gen.tsx',
+  //   route: '/student-seat-randomizer',
+  // },
   //   {
   //     label: 'tools.furigana_reader',
   //     ext: 'furigana.log',
