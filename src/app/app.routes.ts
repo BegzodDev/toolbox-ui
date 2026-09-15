@@ -21,6 +21,13 @@ export const routes: Routes = [
       ),
   },
   {
+    path: 'student-seat-randomizer',
+    loadComponent: () =>
+      import('./components/student-seat-randomizer/student-seat-randomizer.component').then(
+        (m) => m.StudentSeatRandomizerComponent,
+      ),
+  },
+  {
     path: 'furigana-reader',
     loadComponent: () =>
       import('./components/furigana-reader/furigana-reader.component').then(
