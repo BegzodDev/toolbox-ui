@@ -94,5 +94,8 @@
     "firstRentHelp": "Shartnoma tuzish vaqtida oldindan to'lanadigan ijara oylar sonini kiriting.",
     "errorInteger": "Iltimos, butun son kiriting.",
     "formDisclaimer": "※ Tozalash xarajati, 24 soatlik qo'llab-quvvatlash kabi shartnomaga kirmagan xarajatlar uchun \"0\" kiriting."
+  },
+  "seatRandomizer": {
+    "title": "O'quvchilarni joylashtirish", "subtitle": "Sinf rejasini yarating, aralashtiring va saqlang.", "students": "O'quvchilar", "addStudent": "O'quvchi qo'shish", "fullName": "F.I.O.", "import": "CSV yoki Excel import", "dimensions": "Sinf o'lchami", "rows": "Qatorlar", "columns": "Ustunlar", "apply": "Qo'llash", "board": "DOSKA", "randomize": "Joylarni aralashtirish", "again": "Yana aralashtirish", "save": "Saqlash", "print": "Chop etish", "png": "PNG yuklash", "pdf": "PDF yuklash", "history": "Saqlangan rejalar", "unassigned": "Joy yetmagan o'quvchilar", "noStudents": "O'quvchi yo'q — joylar soniga qarab namunaviy ro'yxat yaratiladi.", "selectHint": "Almashtirish uchun ikki joyni bosing.", "saved": "Reja saqlandi.", "loaded": "Reja yuklandi.", "invalid": "Iltimos, 1 dan katta qator va ustun kiriting.", "duplicate": "Bu ism ro'yxatda bor.", "importSuccess": "Ro'yxat import qilindi.", "importError": "Fayldan o'quvchi ismlari topilmadi.", "storageError": "Ma'lumotlarni saqlab bo'lmadi.", "arrangementName": "Reja nomi", "cancel": "Bekor qilish", "load": "Yuklash", "rename": "Nomini o'zgartirish", "delete": "O'chirish", "confirmDelete": "Bu rejani o'chirasizmi?", "noHistory": "Hali saqlangan reja yo'q.", "fallbackStudent": "O'quvchi", "date": "Sana"
   }
 }

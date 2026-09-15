@@ -1,0 +1,254 @@
+.randomizer-page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 1rem 2rem 4rem;
+}
+.randomizer-header {
+  margin-bottom: 32px;
+}
+.randomizer-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 8px;
+}
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-faint);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 8px;
+}
+.lead {
+  font-size: 15px;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.workspace {
+  display: grid;
+  grid-template-columns: minmax(280px, 330px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+.control-panel {
+  display: grid;
+  gap: 16px;
+  position: sticky;
+  top: 24px;
+}
+.canvas-panel {
+  min-width: 0;
+}
+:host ::ng-deep .p-card {
+  background: var(--bg-elevated);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: none;
+}
+:host ::ng-deep .p-card-title {
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 13px;
+}
+.add-student {
+  display: grid;
+  gap: 8px;
+}
+.import {
+  cursor: pointer;
+  display: block;
+  color: var(--teal);
+  margin: 16px 0;
+  font-size: 13px;
+}
+.import input {
+  display: none;
+}
+.hint {
+  color: var(--text-dim);
+  font-size: 12px;
+  margin: 8px 0;
+}
+.student-list {
+  list-style: none;
+  max-height: 260px;
+  overflow: auto;
+}
+.student-list li {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 5px 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+.student-list li span {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.dimension-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.dimension-inputs label {
+  display: grid;
+  gap: 5px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--text-dim);
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  min-height: 46px;
+  margin-bottom: 8px;
+}
+.classroom {
+  background: var(--bg-elevated);
+  border: 1px solid var(--line);
+  padding: 24px;
+  border-radius: var(--radius);
+}
+.board {
+  text-align: center;
+  letter-spacing: 0.22em;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 10px;
+  border-radius: 7px;
+  color: #dce9e8;
+  background: #31434a;
+  margin-bottom: 25px;
+}
+.seat-grid {
+  display: grid;
+  gap: 12px;
+  overflow-x: auto;
+}
+.seat {
+  min-height: 82px;
+  border: 1px dashed #53606b;
+  background: var(--bg);
+  color: var(--text-dim);
+  border-radius: var(--radius);
+  padding: 9px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  gap: 3px;
+  transition: 0.15s;
+}
+.seat:hover {
+  border-color: var(--teal);
+  transform: translateY(-2px);
+}
+.seat.occupied {
+  background: var(--accent);
+  color: var(--on-accent);
+  border-style: solid;
+  border-color: var(--accent);
+  font-weight: 600;
+}
+.seat.selected {
+  outline: 3px solid var(--teal);
+  outline-offset: 2px;
+}
+.seat small {
+  opacity: 0.7;
+  font-size: 10px;
+}
+.unassigned {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--highlight);
+  border-radius: var(--radius);
+  padding: 12px;
+  background: var(--bg-elevated);
+}
+.unassigned h3 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+.unassigned span {
+  display: inline-block;
+  background: var(--bg-sunken);
+  border-radius: 14px;
+  padding: 3px 10px;
+  margin: 3px;
+  font-size: 12px;
+}
+.history {
+  margin-top: 24px;
+}
+.empty-state {
+  color: var(--text-dim);
+  text-align: center;
+  padding: 22px;
+}
+.table-actions {
+  white-space: nowrap;
+}
+.feedback {
+  margin: 0 0 14px;
+  color: var(--teal);
+}
+.feedback.error {
+  color: var(--highlight);
+}
+.dialog-input {
+  width: 100%;
+}
+@media (max-width: 900px) {
+  .workspace {
+    grid-template-columns: 1fr;
+  }
+  .control-panel {
+    position: static;
+  }
+  .seat-grid {
+    gap: 8px;
+  }
+  .classroom {
+    padding: 14px;
+  }
+}
+@media print {
+  .control-panel,
+  .actions,
+  .history,
+  .section-tag,
+  .lead,
+  .hint,
+  .unassigned {
+    display: none !important;
+  }
+  .randomizer-page {
+    padding: 0 !important;
+  }
+  .workspace {
+    display: block;
+  }
+  .classroom {
+    border: none;
+    background: white;
+  }
+  .board {
+    background: #333;
+  }
+  .seat {
+    color: #111;
+    border-color: #999;
+    background: #eee;
+  }
+  .seat.occupied {
+    background: #f1b554;
+  }
+}

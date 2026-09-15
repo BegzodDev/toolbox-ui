@@ -94,5 +94,8 @@
     "firstRentHelp": "契約時に前払いする家賃の月数を入力してください。",
     "errorInteger": "整数を入力してください。",
     "formDisclaimer": "※ クリーニング費用・24時間サポートなど、契約に含まれない費用は「0」を入力してください。"
+  },
+  "seatRandomizer": {
+    "title": "生徒の座席配置", "subtitle": "教室の座席表を作成・抽選・保存します。", "students": "生徒", "addStudent": "生徒を追加", "fullName": "氏名", "import": "CSV / Excel をインポート", "dimensions": "教室サイズ", "rows": "行", "columns": "列", "apply": "適用", "board": "黒板", "randomize": "座席をランダム化", "again": "もう一度抽選", "save": "保存", "print": "印刷", "png": "PNG を保存", "pdf": "PDF を保存", "history": "保存した座席表", "unassigned": "未配置の生徒", "noStudents": "生徒がいない場合、座席数に応じた仮のリストを作成します。", "selectHint": "2つの席をクリックして入れ替え・移動できます。", "saved": "座席表を保存しました。", "loaded": "座席表を読み込みました。", "invalid": "行と列は 1 以上にしてください。", "duplicate": "この名前はすでにあります。", "importSuccess": "生徒リストをインポートしました。", "importError": "ファイルに生徒名が見つかりません。", "storageError": "データを保存できませんでした。", "arrangementName": "座席表の名前", "cancel": "キャンセル", "load": "読み込む", "rename": "名前を変更", "delete": "削除", "confirmDelete": "この座席表を削除しますか？", "noHistory": "保存した座席表はまだありません。", "fallbackStudent": "生徒", "date": "日付"
   }
 }

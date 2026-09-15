@@ -94,5 +94,8 @@
     "firstRentHelp": "Please enter the number of months of rent to be paid in advance at the time of contract.",
     "errorInteger": "Please enter an integer.",
     "formDisclaimer": "※ For fees not included in the contract, such as cleaning fees and 24h support, please enter \"0\"."
+  },
+  "seatRandomizer": {
+    "title": "Student seating", "subtitle": "Create, shuffle and save your classroom plan.", "students": "Students", "addStudent": "Add student", "fullName": "Full name", "import": "Import CSV or Excel", "dimensions": "Classroom size", "rows": "Rows", "columns": "Columns", "apply": "Apply", "board": "BOARD", "randomize": "Randomize seating", "again": "Randomize again", "save": "Save", "print": "Print", "png": "Download PNG", "pdf": "Download PDF", "history": "Saved plans", "unassigned": "Unassigned students", "noStudents": "No students yet — a fallback list will be created from the seat count.", "selectHint": "Click two seats to swap or move a student.", "saved": "Arrangement saved.", "loaded": "Arrangement loaded.", "invalid": "Enter rows and columns of at least 1.", "duplicate": "This name is already on the list.", "importSuccess": "Student list imported.", "importError": "No student names were found in this file.", "storageError": "Could not save your data.", "arrangementName": "Arrangement name", "cancel": "Cancel", "load": "Load", "rename": "Rename", "delete": "Delete", "confirmDelete": "Delete this arrangement?", "noHistory": "No saved arrangements yet.", "fallbackStudent": "Student", "date": "Date"
   }
 }

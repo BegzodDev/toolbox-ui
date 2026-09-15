@@ -1,0 +1,229 @@
+<section class="randomizer-page">
+  <header class="randomizer-header">
+    <div class="section-tag">{{ "tools.seat_generator" | transloco }}</div>
+    <h1>{{ "seatRandomizer.title" | transloco }}</h1>
+    <p class="lead">{{ "seatRandomizer.subtitle" | transloco }}</p>
+  </header>
+  <p *ngIf="feedback" class="feedback" [class.error]="feedbackType === 'error'">
+    {{ feedback }}
+  </p>
+  <div class="workspace">
+    <aside class="control-panel">
+      <p-card [header]="t('students')"
+        ><div class="add-student">
+          <input
+            pInputText
+            [(ngModel)]="newStudent"
+            (keyup.enter)="addStudent()"
+            [placeholder]="t('fullName')"
+            [attr.aria-label]="t('fullName')"
+          /><p-button
+            icon="pi pi-plus"
+            [label]="t('addStudent')"
+            (onClick)="addStudent()"
+          ></p-button>
+        </div>
+        <label class="import"
+          ><i class="pi pi-upload"></i> {{ t("import")
+          }}<input
+            type="file"
+            accept=".csv,.xlsx,.xls"
+            (change)="importFile($event)"
+        /></label>
+        <p class="hint" *ngIf="!students.length">{{ t("noStudents") }}</p>
+        <ul class="student-list">
+          <li *ngFor="let student of students">
+            <span>{{ student.fullName }}</span
+            ><button
+              pButton
+              class="p-button-text p-button-sm"
+              icon="pi pi-pencil"
+              [pTooltip]="t('rename')"
+              (click)="editStudent(student)"
+            ></button
+            ><button
+              pButton
+              class="p-button-text p-button-danger p-button-sm"
+              icon="pi pi-trash"
+              [pTooltip]="t('delete')"
+              (click)="removeStudent(student)"
+            ></button>
+          </li></ul
+      ></p-card>
+      <p-card [header]="t('dimensions')"
+        ><div class="dimension-inputs">
+          <label
+            >{{ t("rows")
+            }}<p-inputNumber
+              [(ngModel)]="rows"
+              [min]="1"
+              [max]="20"
+              [showButtons]="true"
+            ></p-inputNumber></label
+          ><label
+            >{{ t("columns")
+            }}<p-inputNumber
+              [(ngModel)]="columns"
+              [min]="1"
+              [max]="20"
+              [showButtons]="true"
+            ></p-inputNumber
+          ></label>
+        </div>
+        <p-button
+          [label]="t('apply')"
+          icon="pi pi-check"
+          (onClick)="applyDimensions()"
+        ></p-button
+      ></p-card>
+    </aside>
+    <main class="canvas-panel">
+      <div class="actions">
+        <p-button
+          [label]="assignedCount ? t('again') : t('randomize')"
+          icon="pi pi-sparkles"
+          (onClick)="randomize()"
+        ></p-button
+        ><p-button
+          [label]="t('save')"
+          icon="pi pi-save"
+          severity="secondary"
+          (onClick)="openSave()"
+        ></p-button
+        ><p-button
+          icon="pi pi-print"
+          severity="secondary"
+          [text]="true"
+          [pTooltip]="t('print')"
+          (onClick)="print()"
+        ></p-button
+        ><p-button
+          icon="pi pi-image"
+          severity="secondary"
+          [text]="true"
+          [pTooltip]="t('png')"
+          (onClick)="exportPng()"
+        ></p-button
+        ><p-button
+          icon="pi pi-file-pdf"
+          severity="secondary"
+          [text]="true"
+          [pTooltip]="t('pdf')"
+          (onClick)="exportPdf()"
+        ></p-button>
+      </div>
+      <p class="hint">{{ t("selectHint") }}</p>
+      <div class="classroom" id="classroom-layout">
+        <div class="board">{{ t("board") }}</div>
+        <div
+          class="seat-grid"
+          [style.gridTemplateColumns]="
+            'repeat(' + columns + ', minmax(92px, 1fr))'
+          "
+        >
+          <button
+            type="button"
+            *ngFor="let seat of layout.seats"
+            class="seat"
+            [class.occupied]="seat.studentId"
+            [class.selected]="selectedSeatId === seat.id"
+            (click)="selectSeat(seat)"
+          >
+            <i
+              class="pi"
+              [class.pi-user]="seat.studentId"
+              [class.pi-plus]="!seat.studentId"
+            ></i
+            ><span>{{ studentFor(seat)?.fullName || "—" }}</span
+            ><small>{{ seat.row }} · {{ seat.column }}</small>
+          </button>
+        </div>
+      </div>
+      <div class="unassigned" *ngIf="unassigned.length">
+        <h3>
+          {{ t("unassigned") }}
+          <p-tag [value]="unassignedCount" severity="warn"></p-tag>
+        </h3>
+        <span *ngFor="let student of unassigned">{{ student.fullName }}</span>
+      </div>
+    </main>
+  </div>
+  <p-card [header]="t('history')" styleClass="history"
+    ><div *ngIf="!history.length" class="empty-state">{{ t("noHistory") }}</div>
+    <p-table *ngIf="history.length" [value]="history"
+      ><ng-template #header
+        ><tr>
+          <th>{{ t("arrangementName") }}</th>
+          <th>{{ "seatRandomizer.date" | transloco }}</th>
+          <th>{{ t("dimensions") }}</th>
+          <th></th></tr></ng-template
+      ><ng-template #body let-item
+        ><tr>
+          <td>{{ item.name }}</td>
+          <td>{{ item.createdAt | date: "medium" }}</td>
+          <td>{{ item.layout.rows }} × {{ item.layout.columns }}</td>
+          <td class="table-actions">
+            <button
+              pButton
+              class="p-button-text p-button-sm"
+              icon="pi pi-eye"
+              [pTooltip]="t('load')"
+              (click)="load(item)"
+            ></button
+            ><button
+              pButton
+              class="p-button-text p-button-sm"
+              icon="pi pi-pencil"
+              [pTooltip]="t('rename')"
+              (click)="rename(item)"
+            ></button
+            ><button
+              pButton
+              class="p-button-text p-button-danger p-button-sm"
+              icon="pi pi-trash"
+              [pTooltip]="t('delete')"
+              (click)="deleteTarget = item; deleteDialog = true"
+            ></button>
+          </td></tr></ng-template></p-table
+  ></p-card>
+  <p-dialog
+    [(visible)]="saveDialog"
+    [header]="t('save')"
+    [modal]="true"
+    [style]="{ width: '28rem' }"
+    ><input
+      pInputText
+      class="dialog-input"
+      [(ngModel)]="saveName"
+      [placeholder]="t('arrangementName')" /><ng-template #footer
+      ><p-button
+        [label]="t('cancel')"
+        severity="secondary"
+        [text]="true"
+        (onClick)="saveDialog = false"
+      ></p-button
+      ><p-button
+        [label]="t('save')"
+        (onClick)="saveArrangement()"
+      ></p-button></ng-template
+  ></p-dialog>
+  <p-dialog
+    [(visible)]="deleteDialog"
+    [header]="t('delete')"
+    [modal]="true"
+    [style]="{ width: '28rem' }"
+    ><p>{{ t("confirmDelete") }}</p>
+    <ng-template #footer
+      ><p-button
+        [label]="t('cancel')"
+        severity="secondary"
+        [text]="true"
+        (onClick)="deleteTarget = null; deleteDialog = false"
+      ></p-button
+      ><p-button
+        [label]="t('delete')"
+        severity="danger"
+        (onClick)="deleteArrangement()"
+      ></p-button></ng-template
+  ></p-dialog>
+</section>
